@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+
+{% block title %}Update your Account details{% endblock title %}
+
+{% block content %}
+    <header>
+        <a href="{% url 'account:dashboard' %}">Dashboard</a>
+    </header>
+    <h2>Update Your Account:</h2>
+    <form method='POST'>
+        {{ update_account_form|crispy }}
+        {% csrf_token %}
+        <input class="btn btn-primary" type='submit' value='Update Account'>
+    </form>
+{% endblock content %}

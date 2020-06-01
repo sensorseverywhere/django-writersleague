@@ -2,7 +2,7 @@ from django import forms
 
 from django.contrib.auth import get_user_model
 
-from .models import CustomUser
+from .models import CustomUser, Profile
 
 
 class LoginForm(forms.Form):
@@ -25,9 +25,15 @@ class UserRegistrationForm(forms.ModelForm):
         return cd['password2']
 
 
-class UserEditForm(forms.ModelForm):
+class UpdateAccountForm(forms.ModelForm):
     class Meta:
         model = CustomUser
-        fields = ('first_name', 'last_name', 'email')
-    
+        fields = ('email',)
+
+
+
+class ProfileEditForm(forms.ModelForm):
+    class Meta:
+        model = Profile
+        exclude = ('user', 'active')
 
