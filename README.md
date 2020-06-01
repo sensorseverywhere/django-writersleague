@@ -1,0 +1,1 @@
+![pipeline status](https://gitlab.com/sensorseverywhere/writersleague/badges/master/pipeline.svg)](https://gitlab.com/sensorseverywhere/writersleague/commits/master)

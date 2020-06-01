@@ -1,0 +1,42 @@
+# pull official base image
+FROM python:3.8.2-alpine
+
+# set work directory
+WORKDIR /usr/src/app
+
+# set environment variables
+ENV PYTHONDONTWRITEBYTECODE 1
+ENV PYTHONUNBUFFERED 1
+ENV DEBUG 0
+
+ARG SECRET_KEY
+ARG AWS_ACCESS_KEY_ID
+ARG AWS_SECRET_ACCESS_KEY
+ARG AWS_STORAGE_BUCKET_NAME
+
+ENV SECRET_KEY axex7_-5@4=*!r!bd7_t508@6&k49l^^j-7n)c*yansbvnm2q97@$adn4bl3*qfv_uw!ehw*d9@0htz=
+ENV DJANGO_ALLOWED_HOSTS .herokuapp.com
+
+ENV AWS_ACCESS_KEY_ID AKIA4JP2NILQ3MRTWLLU
+ENV AWS_SECRET_ACCESS_KEY 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
+ENV AWS_STORAGE_BUCKET_NAME writersleague
+
+RUN apk update && apk add build-base python3-dev py-pip jpeg-dev zlib-dev openssl-dev gcc libffi-dev postgresql-dev
+ENV LIBRARY_PATH=/lib:/usr/lib
+
+# install dependencies
+RUN pip install --upgrade pip
+COPY ./requirements.txt /usr/src/app/requirements.txt
+RUN pip install -r requirements.txt
+
+# copy project
+COPY . /usr/src/app/
+
+RUN python manage.py collectstatic --noinput
+
+# add and run as non-root user
+RUN adduser -D miriad
+USER miriad
+
+# run gunicorn
+CMD gunicorn writersleague.wsgi:application --bind 0.0.0.0:$PORT
