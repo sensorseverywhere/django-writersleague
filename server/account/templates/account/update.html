@@ -6,9 +6,9 @@
 
 {% block content %}
     <header>
-        <a href="{% url 'account:dashboard' %}">Dashboard</a>
+        <a href="{% url 'dashboard' %}">Dashboard</a>
     </header>
-    <h2>Update Your Account:</h2>
+    <h2>Update Your </h2>
     <form method='POST'>
         {{ update_account_form|crispy }}
         {% csrf_token %}

@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Your Profile{% endblock title %}
+
+{% block content %}
+<header>
+    <a href="{% url 'dashboard' %}">Dashboard</a>
+</header>
+    <h1>Your Profile</h1>
+    {{user}}
+    Username: {{ user.username }}
+    First Name: {{ user.first_name }}
+    Last Name: {{ user.last_name }}
+
+    <br>
+    <div>
+        <a href="{% url 'update_profile' %}">
+            <button class="btn btn-primary">
+                Update Your Profile
+            </button>
+        </a>
+    </div>
+{% endblock content %}

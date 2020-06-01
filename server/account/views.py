@@ -4,9 +4,9 @@ from django.contrib.auth import authenticate, login
 from django.contrib.auth.decorators import login_required
 from django.views.generic import TemplateView
 
-from .forms import LoginForm, UpdateAccountForm, UserRegistrationForm
+from .forms import LoginForm, UpdateAccountForm, UpdateProfileForm, UpdateAddressForm, UserRegistrationForm
 
-from .models import CustomUser
+from .models import Address, CustomUser, Profile
 from stories.models import Story
 
 
@@ -16,26 +16,10 @@ class AccountView(TemplateView):
     template_name = 'account/details.html'
 
 
-# Create your views here.
-def user_login(request):
-    if request.method == 'POST':
-        form = LoginForm(request.POST)
-        if form.is_valid():
-            cd = form.cleaned_data
-            user = authenticate(request,
-                                username=cd['username'],
-                                password=cd['password'])
-            if user is not None:
-                if user.is_active:
-                    login(request, user)
-                    return HttpResponse('User logged in')
-                else:
-                    return HttpResponse('Account disabled')
-            else:
-                return HttpResponse('Invalid login')
-    else:
-        form = LoginForm()
-    return render(request, 'account/login.html', {'form': form})
+class ProfileView(TemplateView):
+    model = Profile
+    context_object_name = 'user'
+    template_name = 'profile/details.html'
 
 
 def register(request):
@@ -67,11 +51,32 @@ def update_account(request):
     
     if request.method == 'POST':
         update_account_form = UpdateAccountForm(instance=request.user, data=request.POST)
+        update_address_form = UpdateAddressForm(instance=request.user, data=request.POST)
 
-        if update_account_form.is_valid():
+        if update_account_form.is_valid() and update_address_form.is_valid():
             update_account_form.save()
-            return HttpResponseRedirect(reverse('account:account_details'))
+            update_address_form.save()
+
+            return HttpResponseRedirect('account/details.html')
     else:
         update_account_form = UpdateAccountForm(instance=request.user)
+        update_address_form = UpdateAddressForm(instance=request.user)
     
-    return render(request, 'account/update.html', {'update_account_form': update_account_form})
+    return render(request, 'account/update.html', {
+                                            'update_account_form': update_account_form,
+                                            'update_address_form': update_address_form
+                                            })
+
+
+@login_required
+def update_profile(request):
+    if request.method == 'POST':
+        update_profile_form = UpdateProfileForm(instance=request.user, data=request.POST)
+
+        if update_profile_form.is_valid():
+            update_profile_form.save()
+            return HttpResponseRedirect(reverse('profile_details'))
+    else:
+        update_profile_form = UpdateProfileForm(instance=request.user)
+    
+    return render(request, 'profile/update.html', { 'update_profile_form': update_profile_form })

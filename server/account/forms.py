@@ -2,7 +2,7 @@ from django import forms
 
 from django.contrib.auth import get_user_model
 
-from .models import CustomUser, Profile
+from .models import Address, CustomUser, Profile
 
 
 class LoginForm(forms.Form):
@@ -32,8 +32,13 @@ class UpdateAccountForm(forms.ModelForm):
 
 
 
-class ProfileEditForm(forms.ModelForm):
+class UpdateProfileForm(forms.ModelForm):
     class Meta:
         model = Profile
-        exclude = ('user', 'active')
+        fields = ('username', 'first_name', 'last_name')
 
+
+class UpdateAddressForm(forms.ModelForm):
+    class Meta:
+        model = Address 
+        fields = ('address1', 'address2', 'city', 'country')
