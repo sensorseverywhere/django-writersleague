@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}{% endblock title %}
+
+{% block content %}
+    Most Popular
+    {% for story in stories %}
+        <ul>
+            <li>
+                <a href="{{ story.get_absolute_url }}">{{ story.title }}</a>
+                <small>{{ story }} </small>
+            
+            </li>
+
+        </ul>
+    {% endfor %}
+{% endblock content %}

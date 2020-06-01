@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% load static %}
+
+{% block title %} Create Story {% endblock title %}
+
+{% block content %}
+    <h1>Add a new story here</h1>
+    <form method='POST'>
+        {% csrf_token %}
+        <div class="row">
+            <div class="col-12">
+                {{ form.title|as_crispy_field }}
+            </div>
+            <div class="col-12">
+                {{ form.content|as_crispy_field }}
+            </div>
+            {{ form.genre|as_crispy_field }}
+        </div>
+        <input type='submit' value="Let's go!">
+    </form>
+{% endblock content %}

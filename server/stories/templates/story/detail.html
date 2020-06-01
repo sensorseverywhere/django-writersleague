@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load markdown_extras %}
+
+{% block title %}{{story.title}}{% endblock title %}
+
+{% block content %}
+    {{ story.title }}
+    {{ story.content|markdown|safe }}
+{% endblock content %}
