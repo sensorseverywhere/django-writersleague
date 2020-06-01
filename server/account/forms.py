@@ -6,7 +6,7 @@ from .models import CustomUser
 
 
 class LoginForm(forms.Form):
-    username = forms.CharField(max_length=255)
+    email = forms.EmailField()
     password = forms.CharField(widget=forms.PasswordInput)
 
 
@@ -16,7 +16,7 @@ class UserRegistrationForm(forms.ModelForm):
 
     class Meta:
         model = CustomUser
-        fields = ('username', 'first_name', 'email')
+        fields = ('email', 'user_type')
     
     def clean_password2(self):
         cd = self.cleaned_data
