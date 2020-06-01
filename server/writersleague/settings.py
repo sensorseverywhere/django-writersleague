@@ -62,6 +62,7 @@ INSTALLED_APPS = [
 
     #Local
     'account.apps.AccountConfig',
+    'stories.apps.StoriesConfig',
 ]
 
 
