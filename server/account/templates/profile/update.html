@@ -12,6 +12,6 @@
     <form method='POST'>
         {{ update_profile_form|crispy }}
         {% csrf_token %}
-        <input type='submit' value='Update Profile'>
+        <input class="btn btn-primary" type='submit' value='Update Profile'>
     </form>
 {% endblock content %}
