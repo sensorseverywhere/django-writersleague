@@ -21,7 +21,8 @@ ENV AWS_ACCESS_KEY_ID AKIA4JP2NILQ3MRTWLLU
 ENV AWS_SECRET_ACCESS_KEY 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
 ENV AWS_STORAGE_BUCKET_NAME writersleague
 
-RUN apk update && apk add build-base python3-dev py-pip jpeg-dev zlib-dev openssl-dev gcc libffi-dev postgresql-dev
+
+RUN apk update && apk add build-base python3-dev py-pip jpeg-dev zlib-dev musl-dev openssl-dev gcc libffi-dev postgresql-dev
 ENV LIBRARY_PATH=/lib:/usr/lib
 
 # install dependencies
