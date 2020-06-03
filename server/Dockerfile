@@ -8,7 +8,9 @@ WORKDIR /usr/src/app
 ENV PYTHONDONTWRITEBYTECODE 1
 ENV PYTHONUNBUFFERED 1
 
-RUN apk update && apk add build-base python3-dev py-pip jpeg-dev zlib-dev musl-dev openssl-dev gcc libffi-dev postgresql-dev graphviz ttf-freefont
+RUN apk --update --upgrade --no-cache add cairo-dev pango-dev gdk-pixbuf
+
+RUN apk add build-base python3-dev py-pip jpeg-dev zlib-dev musl-dev openssl-dev gcc libffi-dev postgresql-dev graphviz ttf-freefont
 
 ENV LIBRARY_PATH=/lib:/usr/lib
 

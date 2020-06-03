@@ -1,0 +1,32 @@
+[
+{
+  "model": "products.product",
+  "pk": 1,
+  "fields": {
+    "name": "VR-Deck",
+    "sku": "0001",
+    "description": "This is a cool product",
+    "price": "1000.00",
+    "slug": "vr-deck",
+    "stock_qty": 100,
+    "active": true,
+    "in_stock": true,
+    "date_added": "2020-01-01T09:51:04.351Z"
+  }
+},
+{
+  "model": "products.product",
+  "pk": 2,
+  "fields": {
+    "name": "Super Car",
+    "sku": "0002",
+    "description": "This is the car of the future",
+    "price": "1000.00",
+    "slug": "super-car",
+    "stock_qty": 110,
+    "active": true,
+    "in_stock": true,
+    "date_added": "2020-01-01T09:59:02.791Z"
+  }
+}
+]

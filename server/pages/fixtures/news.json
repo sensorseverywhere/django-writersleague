@@ -1,0 +1,15 @@
+[
+  {
+    "model": "pages.newsitem",
+    "fields": {
+      "url": "http://wisemonkey.com.au",
+      "title": "Melbourne’s Ascot House on the market with price hopes of more than $8 million",
+      "content": "A Victorian mansion built in 1860 and held by the same family since the 1970s is being pitched to high-net-worth buyers in Australia and overseas after being put on the market with price expectations of $8 million or more.",
+      "image_url": "https://res.akamaized.net/domain/image/upload/t_web/c_fill,w_180,h_120/v1571718449/DSC06349copy_sq8c0h.jpg",
+      "active": false,
+      "date_added": "2019-10-23T18:30:49.797Z",
+      "date_updated": "2019-10-23T18:30:49.797Z"
+    }
+  }
+]
+

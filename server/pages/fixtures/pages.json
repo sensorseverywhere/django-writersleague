@@ -1,0 +1,147 @@
+[
+  {
+    "model": "pages.pagetemplatetag",
+    "fields": {
+      "name": "home-banner-grid"
+    }
+  },
+  {
+    "model": "pages.pagetemplatetag",
+    "fields": {
+      "name": "about"
+    }
+  },
+  {
+    "model": "pages.pagetemplatetag",
+    "fields": {
+      "name": "testimonials"
+    }
+  },
+  {
+    "model": "pages.pagetemplatetag",
+    "fields": {
+      "name": "services"
+    }
+  },
+  {
+    "model": "pages.contentblock",
+    "fields": {
+      "tags": "home-banner-grid",
+      "title": "Efficiency",
+      "content": "At INDMS we understand what a deadline is. Whatever your commercial property requires, we will deliver on time and on budget.",
+      "active": false,
+      "date_added": "2019-10-28T03:46:16.779Z",
+      "date_updated": "2019-10-28T03:46:16.779Z"
+    }
+  },
+  {
+    "model": "pages.contentblock",
+    "fields": {
+      "tags": "home-banner-grid",
+      "title": "Expertise",
+      "content": "The team at INDMS has over 30 years experience in the industrial property and maintenance space.",
+      "active": false,
+      "date_added": "2019-10-28T03:48:04.054Z",
+      "date_updated": "2019-10-28T03:48:04.054Z"
+    }
+  },
+  {
+    "model": "pages.contentblock",
+    "fields": {
+      "tags": "home-banner-grid",
+      "title": "Reliability",
+      "content": "We make sure our property maintenance specialists are there when you expect them. We are on time, every time.",
+      "active": false,
+      "date_added": "2019-10-28T03:49:54.692Z",
+      "date_updated": "2019-10-28T03:49:54.693Z"
+    }
+  },
+  {
+    "model": "pages.contentblock",
+    "fields": {
+      "tags": "testimonials",
+      "title": "Michael",
+      "content": "I've worked with a number of teams over the years and have found the team at INDMS to be simply the best. They not only strive to meet your requirements, but often surpass them. Highly recommended.",
+      "active": false,
+      "date_added": "2019-10-28T03:52:21.079Z",
+      "date_updated": "2019-10-28T03:52:21.079Z"
+    }
+  },
+  {
+    "model": "pages.contentblock",
+    "fields": {
+      "tags": "testimonials",
+      "title": "Wade",
+      "content": "No complaints from me. I have and will use them again.",
+      "active": false,
+      "date_added": "2019-10-28T03:53:29.444Z",
+      "date_updated": "2019-10-28T03:53:29.444Z"
+    }
+  },
+  {
+    "model": "pages.contentblock",
+    "fields": {
+      "tags": "about",
+      "title": "Our Mission",
+      "content": "Established in 2017, the directors of bring over 30 years of experience drawn from the commercial property and building maintenance fields. Over this time, through the experience of multiple jobs and clients, both Danny and Nick noticed a gap between the services commercial maintenance companies offered and the needs of the tenant or owners of industrial properties.",
+      "active": false,
+      "date_added": "2019-10-28T03:53:29.444Z",
+      "date_updated": "2019-10-28T03:53:29.444Z"
+    }
+  },
+  {
+    "model": "pages.contentblock",
+    "fields": {
+      "tags": "services",
+      "title": "Gardening",
+      "content": "gardening",
+      "active": false,
+      "date_added": "2019-10-28T05:26:23.076Z",
+      "date_updated": "2019-10-28T05:26:23.076Z"
+    }
+  },
+  {
+    "model": "pages.contentblock",
+    "fields": {
+      "tags": "services",
+      "title": "Roofing",
+      "content": "roofing",
+      "active": false,
+      "date_added": "2019-10-28T05:26:42.906Z",
+      "date_updated": "2019-10-28T05:26:42.906Z"
+    }
+  },
+  {
+    "model": "pages.contentblock",
+    "fields": {
+      "tags": "services",
+      "title": "Testing and Tagging",
+      "content": "Testing and Tagging",
+      "active": false,
+      "date_added": "2019-10-28T05:27:03.844Z",
+      "date_updated": "2019-10-28T05:27:03.844Z"
+    }
+  },
+  {
+    "model": "pages.contentblock",
+    "fields": {
+      "tags": "services",
+      "title": "Emergency Route Analysis",
+      "content": "emergency route analysis",
+      "active": false,
+      "date_added": "2019-10-28T05:27:40.924Z",
+      "date_updated": "2019-10-28T05:27:40.924Z"
+    }
+  },
+  {
+    "model": "pages.contentblock",
+    "fields": {
+      "tags": "services",
+      "title": "Building",
+      "content": "building",
+      "active": false,
+      "date_added": "2019-10-28T05:27:53.139Z",
+      "date_updated": "2019-10-28T05:27:53.139Z"
+    }
+  }
+  ]

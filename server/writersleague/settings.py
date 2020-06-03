@@ -50,6 +50,11 @@ INSTALLED_APPS = [
 
     #Local
     'account.apps.AccountConfig',
+    'cart.apps.CartConfig',
+    'orders.apps.OrdersConfig',
+    'pages.apps.PagesConfig',
+    'payments.apps.PaymentsConfig',
+    'products.apps.ProductsConfig',
     'stories.apps.StoriesConfig',
 ]
 
