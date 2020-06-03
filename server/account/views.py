@@ -41,9 +41,10 @@ def register(request):
 
 @login_required
 def dashboard(request):
+    
     stories = Story.objects.filter(author=request.user)
 
-    return render(request, 'account/dashboard.html', {'section': 'dashboard', 'stories': stories})
+    return render(request, 'account/dashboard.html', {'stories': stories})
 
 
 @login_required

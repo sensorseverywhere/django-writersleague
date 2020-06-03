@@ -4,7 +4,13 @@
 {% block title %}{% endblock title %}
 
 {% block content %}
-    Hi {{user.username}}, welcome to your dashboard
+    Hi {{user.user_profile}}, welcome to your dashboard <br>
+
+    {% if user.user_type == 1 %}
+        {% include 'account/author_dashboard.html' %}
+    {% else %}
+        {% include 'account/voter_dashboard.html' %}
+    {% endif %}
     <br>
     {% for story in stories %}
         {{story.title}} 

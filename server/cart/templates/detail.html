@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load form_filters %}
+
+{% block title %}{% endblock title %}
+
+{% block content %}
+<div class="container-fluid">
+    <div class="product-container">
+        <h4 class="title-product text-center">Manage Cart</h4>
+        <div class="row form manage-cart">
+                <div class="col-md-8 col-sm-10 offset-2">
+                <hr>
+                <div class="row cart-header-row">
+                    <span>Item</span>
+                    <span>Price</span>
+                    <span class="qty">Qty</span>
+                    <span>Item Total</span>   
+                    <span>Remove</span>                    
+                </div>
+                <hr>
+                {% for item in cart %}
+                {% with product=item.product %}
+                <div class="row cart-row">
+                        <span>{{product.name}}</span>
+                        <span>${{ item.price }}</span>
+                        <span class="qty">
+                            <form action="{% url 'cart:cart_add' product.id %}" method="post">
+                                {{ item.update_quantity_form.quantity|addclass:'custom-select' }}
+                                {{ item.update_quantity_form.update }}
+                                <button class="btn d-pkg-btn-1 update-cart-btn" type="submit">Update</button>
+
+                                {% csrf_token %}
+                                </form></span>
+                        <span>${{ item.total_price }}</span>   
+                        <span><a href="{% url 'cart:cart_remove' product.id %}"><i class="fa fa-trash remove-icon"></i></a></span> 
+                </div>
+
+
+                {% endwith %}
+                {% endfor %}
+                <div class="row cart-total-row">
+                    <div class="col-md-8 col-sm-10 offset-6">
+                        <span>Total</span>
+                        <span id="cart-total">${{ cart.get_total_price }}</span>
+                        <span class="btn d-pkg-btn-1"><a href="{% url 'orders:order_create' %}">Checkout</a></span>
+                    </div>
+                    
+                </div>
+       
+          
+        </div>
+    </div>
+</div>
+
+{% endblock content %}

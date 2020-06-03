@@ -56,6 +56,21 @@ class ProductImage(models.Model):
     # image = models.ImageField(upload_to=upload_image_path(file_path='main'))
     # thumbnail = models.ImageField(upload_to=upload_image_path(file_path='thumbs'))
 
+
+class Plan(models.Model):
+    name = models.CharField(max_length=100)
+    slug = models.SlugField()
+    text = models.TextField(blank=True, null=True)
+    price = models.DecimalField(decimal_places=2, max_digits=6)
+    requires_subscription = models.BooleanField(default=False)
+
+    def __str__(self):
+        return self.name
+
+    def natural_key(self):
+        return (self.name)
+
+
     
 class Category(models.Model):
     products = models.ManyToManyField(Product, blank=True)

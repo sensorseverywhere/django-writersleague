@@ -20,6 +20,9 @@ services:
       - POSTGRES_USER=miriad
       - POSTGRES_PASSWORD=cANDg2011
       - POSTGRES_DB=writersleague
+      - SUPERUSER_EMAIL=admin@writersleague.com
+      - SUPERUSER_PASS=Qqqqqq!1
+
   
 volumes:
   postgres_data:

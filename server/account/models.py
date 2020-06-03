@@ -59,7 +59,7 @@ class Guest(models.Model):
 
 
 class Profile(models.Model):
-    user = models.OneToOneField(CustomUser, on_delete=models.CASCADE)
+    user = models.OneToOneField(CustomUser, on_delete=models.CASCADE, related_name="user_profile")
     username = models.CharField(max_length=60, unique=True)
     active = models.BooleanField(default=False)
     first_name = models.CharField(max_length=60, blank=True, null=True)

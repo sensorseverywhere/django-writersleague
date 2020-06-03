@@ -1,0 +1,28 @@
+[
+{
+  "model": "payments.plan",
+  "pk": 1,
+  "fields": {
+    "name": "Performance",
+    "slug": "performance",
+    "text": "Performance",
+    "price": "19.95",
+    "coupon_code": "none",
+    "coupon_amount": "0.00",
+    "requires_subscription": true
+  }
+},
+{
+  "model": "payments.plan",
+  "pk": 2,
+  "fields": {
+    "name": "Standard",
+    "slug": "standard",
+    "text": "Standard",
+    "price": "19.95",
+    "coupon_code": "none",
+    "coupon_amount": "0.00",
+    "requires_subscription": true
+  }
+}
+]
