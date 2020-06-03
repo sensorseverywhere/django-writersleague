@@ -1,7 +1,7 @@
 from django.views.generic import DetailView, ListView
 from django.shortcuts import render
 
-from .models import Product, Review
+from .models import Plan, Product, Review
 from cart.forms import CartAddProductForm
 
 # Create your views here.
@@ -25,3 +25,9 @@ class ProductDetailView(DetailView):
         context['products'] = Product.objects.all()
         context['reviews'] = Review.objects.all()
         return context
+
+
+class PlanListView(ListView):
+    model = Plan
+    context_object_name = 'plans'
+    template_name = 'products/plans.html'
