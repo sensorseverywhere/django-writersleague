@@ -1,5 +1,6 @@
 import os
 
+from django.conf import settings
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import render, get_object_or_404, redirect
 from django.urls import reverse
@@ -10,8 +11,8 @@ from orders.models import Order
 from .models import Customer
 import stripe
 
-stripe.api_key="sk_test_owBhMcnDT8wl53B3jVGjf6SP00UgnKsLBG"
-STRIPE_PUB_KEY="pk_test_CZ7psf5M0gkRwM99OTOBtsuK00ZYlpWHUI"
+
+stripe.api_key = settings.STRIPE_SECRET_KEY
 
 
 # Create your views here.
@@ -24,18 +25,19 @@ class CheckoutView(LoginRequiredMixin, TemplateView):
 
         stripe_price = 100
         context['stripe_price'] = stripe_price
-        context['publish_key'] = STRIPE_PUB_KEY       
+        context['publish_key'] = settings.STRIPE_PUBLISHABLE_KEY     
 
         return context
     
     def dispatch(self, request, *args, **kwargs):
         if request.method == 'POST':
             print('Using dispatch method')
-            stripe_customer = stripe.Customer.create(email=request.user.email, source=request.POST['stripeToken'])
+            # stripe_customer = stripe.Customer.create(email=request.user.email)
             charge = stripe.Charge.create(
-                amount=998,
-                currency='aud',
-                customer=stripe_customer.id
+                amount=500,
+                currency='usd',
+                description='Standard',
+                source=request.POST['stripeToken']
             )
 
             return redirect(reverse('payments:success'))

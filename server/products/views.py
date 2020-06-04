@@ -1,3 +1,4 @@
+from django.conf import settings
 from django.views.generic import DetailView, ListView
 from django.shortcuts import render
 
@@ -31,3 +32,8 @@ class PlanListView(ListView):
     model = Plan
     context_object_name = 'plans'
     template_name = 'products/plans.html'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['key'] = settings.STRIPE_PUBLISHABLE_KEY
+        return context
