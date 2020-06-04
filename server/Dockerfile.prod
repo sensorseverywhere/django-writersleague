@@ -21,6 +21,9 @@ ENV AWS_ACCESS_KEY_ID AKIA4JP2NILQ3MRTWLLU
 ENV AWS_SECRET_ACCESS_KEY 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
 ENV AWS_STORAGE_BUCKET_NAME writersleague
 
+ENV STRIPE_SECRET_KEY sk_test_51GqPOSFS8NfXk2KOy7xDwfPuNvzsy7STyaZrGK8s6oM8iu63V9PKObNGOdcmzQJT2XdwE94ummdSscbvmcdMtNsP00hUpMxTHa
+ENV STRIPE_PUBLISHABLE_KEY pk_test_51GqPOSFS8NfXk2KOgS76r27SGM5aK7LArJVfDbGlTKw9zlxLZH2Mv9lp9afCv3zxMlIwIhEtdM8SujAoMXKPqj2A00Bk1ZlP6k
+
 RUN apk --update --upgrade --no-cache add cairo-dev pango-dev gdk-pixbuf
 
 RUN apk add build-base python3-dev py-pip jpeg-dev zlib-dev musl-dev openssl-dev gcc libffi-dev postgresql-dev graphviz ttf-freefont
