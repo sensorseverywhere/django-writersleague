@@ -4,7 +4,14 @@
 {% block title %}{% endblock title %}
 
 {% block content %}
-    Hi {{user.preferred_name|capfirst}}, welcome to your dashboard <br>
+    {% if user.profile.username == '' %}
+        Hi, it looks like you need to update your profile. <br>
+        <a href="/profile/update/">You can do so here.</a>
+    {% else %}
+    Hi {{user.profile.username}}, welcome to your dashboard <br>
+    {% endif %}
+    
+
 
     {% if user.user_type == 1 %}
         {% include 'account/author_dashboard.html' %}

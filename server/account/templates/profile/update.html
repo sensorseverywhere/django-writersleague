@@ -10,6 +10,7 @@
 </header>
     <h1>Update your Profile</h1>
     <form method='POST'>
+        {{ update_account_form|crispy }}
         {{ update_profile_form|crispy }}
         {% csrf_token %}
         <input class="btn btn-primary" type='submit' value='Update Profile'>

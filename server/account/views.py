@@ -32,7 +32,7 @@ def register(request):
                 user_form.cleaned_data['password']
             )
             new_user.save()
-
+            Profile.objects.create(user=new_user)
             return render(request, 'registration/register_done.html', {'new_user': new_user})
     else:
         user_form = UserRegistrationForm()
@@ -72,12 +72,17 @@ def update_account(request):
 @login_required
 def update_profile(request):
     if request.method == 'POST':
-        update_profile_form = UpdateProfileForm(instance=request.user, data=request.POST)
+        update_account_form = UpdateAccountForm(instance=request.user, data=request.POST)
+        update_profile_form = UpdateProfileForm(instance=request.user.profile, data=request.POST)
 
-        if update_profile_form.is_valid():
+        if update_account_form.is_valid() and update_profile_form.is_valid():
+            update_account_form.save()
             update_profile_form.save()
             return HttpResponseRedirect(reverse('profile_details'))
     else:
-        update_profile_form = UpdateProfileForm(instance=request.user)
+        update_account_form = UpdateAccountForm(instance=request.user)
+        update_profile_form = UpdateProfileForm(instance=request.user.profile)
     
-    return render(request, 'profile/update.html', { 'update_profile_form': update_profile_form })
+    return render(request, 'profile/update.html', { 
+                                        'update_account_form': update_account_form,
+                                        'update_profile_form': update_profile_form })

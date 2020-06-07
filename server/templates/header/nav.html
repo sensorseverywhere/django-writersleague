@@ -8,8 +8,8 @@
     		<ul class='navbar-nav ml-auto'>
     			<li class='nav-item'>
     				<a class='nav-link dropdown-toggle' href='#' id='userMenu' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false'>
-						{% if user.preferred_name %}
-						    Hi, {{ user.preferred_name|capfirst }}
+						{% if user.profile.username %}
+						    Hi, {{ user.profile.username }}
 						{% else %}
 							Hi, Anonymous User. 
 							<br><small><a href="/profile/update/">Update profile ?</a></small>
