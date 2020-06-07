@@ -17,11 +17,9 @@ class HomePageView(TemplateView):
     template_name = 'pages/home.html'
 
     def get_context_data(self, **kwargs):
-         context = super(HomePageView, self).get_context_data(**kwargs)
-         context['home'] = ContentBlock.objects.all()
-         context['news_item'] = NewsItem.objects.all()
-         context['products'] = Product.objects.all()
-         return context
+        context = super(HomePageView, self).get_context_data(**kwargs)
+        context['home'] = ContentBlock.objects.all()
+        return context
 
 class AboutPageView(TemplateView):
     template_name = "pages/about.html"
@@ -41,7 +39,7 @@ class ContactPageView(FormView):
         form.send_mail()
         return super().form_valid(form)
     
-class ThanksView(TemplateView):
+class ThanksPageView(TemplateView):
     template_name = 'pages/thanks.html'
 
 
