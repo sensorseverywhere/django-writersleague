@@ -61,15 +61,10 @@ class Guest(models.Model):
 class Profile(models.Model):
     user = models.OneToOneField(CustomUser, on_delete=models.CASCADE, related_name="user_profile")
     username = models.CharField(max_length=60, unique=True)
+    preferred_name = models.CharField(max_length=60)
     active = models.BooleanField(default=False)
     first_name = models.CharField(max_length=60, blank=True, null=True)
     last_name = models.CharField(max_length=100, blank=True, null=True)
-    ## Subscription details
-    # plan = models.ForeignKey(Plan, related_name='profile_plan', on_delete=models.CASCADE)
-    # stripe_id = models.CharField(max_length=255)
-    # stripe_subscription_id = models.CharField(max_length=255)
-    # cancel_at_period_end = models.BooleanField(default=False)
-    # membership = models.BooleanField(default=True)
 
     def __str__(self):
         return self.username

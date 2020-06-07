@@ -4,7 +4,7 @@
 {% block title %}{% endblock title %}
 
 {% block content %}
-    Hi {{user.user_profile}}, welcome to your dashboard <br>
+    Hi {{user.preferred_name|capfirst}}, welcome to your dashboard <br>
 
     {% if user.user_type == 1 %}
         {% include 'account/author_dashboard.html' %}

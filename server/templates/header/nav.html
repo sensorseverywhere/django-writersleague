@@ -8,7 +8,13 @@
     		<ul class='navbar-nav ml-auto'>
     			<li class='nav-item'>
     				<a class='nav-link dropdown-toggle' href='#' id='userMenu' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false'>
-    					{{ user.user_profile.username }}
+						{% if user.preferred_name %}
+						    Hi, {{ user.preferred_name|capfirst }}
+						{% else %}
+							Hi, Anonymous User. 
+							<br><small><a href="/profile/update/">Update profile ?</a></small>
+						{% endif %}
+    					
     				</a>
     			<div class='dropdown-menu dropdown-menu-right' aria-labelledby='userMenu'>
 					<a class='dropdown-item' href='{% url "dashboard" %}'>Dashboard</a>

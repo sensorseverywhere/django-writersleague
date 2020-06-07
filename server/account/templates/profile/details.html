@@ -8,10 +8,10 @@
     <a href="{% url 'dashboard' %}">Dashboard</a>
 </header>
     <h1>Your Profile</h1>
-    {{user.username}}
-    Username: {{ user.profile.username }}
-    First Name: {{ user.first_name }}
-    Last Name: {{ user.last_name }}
+
+    Preferred Name: {{ user.user_profile.username }} <br>
+    First Name: {{ user.first_name }} <br>
+    Last Name: {{ user.last_name }} <br>
 
     <br>
     <div>
