@@ -153,12 +153,20 @@ LOGOUT_URL = 'logout'
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
+MAILGUN_API_BASE_URL="https://api.mailgun.net/v3/d-pkg.com"
+MAILGUN_SERVER_NAME = "smtp.mailgun.org"
+
+ANYMAIL = {
+    "MAILGUN_API_KEY": os.environ.get('MAILGUN_API_KEY'),
+    "MAILGUN_SENDER_DOMAIN": 'mg.d-pkg.com', 
+}
+
 
 if not DEBUG:
     # EMAIL SETTINGS
     EMAIL_BACKEND = "anymail.backends.mailgun.EmailBackend" 
-    DEFAULT_FROM_EMAIL = "wade@d-pkg.com" 
-    SERVER_EMAIL = "admin@d-pkg.com" 
+    DEFAULT_FROM_EMAIL = "admin@thewritersleague.com" 
+    SERVER_EMAIL = "admin@thewritersleague.com" 
     REST_FRAMEWORK = {
         "DEFAULT_RENDERER_CLASSES": (
             "rest_framework.renderers.JSONRenderer",

@@ -1,28 +1,32 @@
 [
 {
-  "model": "payments.plan",
-  "pk": 1,
+  "model": "products.plan",
   "fields": {
-    "name": "Performance",
-    "slug": "performance",
-    "text": "Performance",
-    "price": "19.95",
-    "coupon_code": "none",
-    "coupon_amount": "0.00",
-    "requires_subscription": true
+    "name": "10 votes",
+    "slug": "10-votes",
+    "text": "basic plan",
+    "price": "1.00",
+    "requires_subscription": false
   }
 },
 {
-  "model": "payments.plan",
-  "pk": 2,
+  "model": "products.plan",
   "fields": {
-    "name": "Standard",
-    "slug": "standard",
-    "text": "Standard",
-    "price": "19.95",
-    "coupon_code": "none",
-    "coupon_amount": "0.00",
-    "requires_subscription": true
+    "name": "50 Votes",
+    "slug": "50-votes",
+    "text": "This is the medium plan",
+    "price": "5.00",
+    "requires_subscription": false
+  }
+},
+{
+  "model": "products.plan",
+  "fields": {
+    "name": "100 Votes",
+    "slug": "100-votes",
+    "text": "This is the medium plan",
+    "price": "10.00",
+    "requires_subscription": false
   }
 }
 ]

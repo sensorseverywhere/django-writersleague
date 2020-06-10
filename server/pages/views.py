@@ -8,6 +8,7 @@ from django.urls import reverse, reverse_lazy
 from .forms import ContactForm
 from .models import ContentBlock, NewsItem
 from products.models import Product
+from stories.models import Story
 
 logger = logging.getLogger(__name__)
 
@@ -19,6 +20,7 @@ class HomePageView(TemplateView):
     def get_context_data(self, **kwargs):
         context = super(HomePageView, self).get_context_data(**kwargs)
         context['home'] = ContentBlock.objects.all()
+        context['stories'] = Story.objects.all()
         return context
 
 class AboutPageView(TemplateView):

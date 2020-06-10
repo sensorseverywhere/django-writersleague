@@ -4,5 +4,29 @@
 {% block title %}Home{% endblock title %}
 
 {% block content %}
-<h1>Home</h1>
+<div class="container">
+    <div class="jumbotron jumbotron-fluid">
+        <h1 class="display-4 text-center">the Writers League</h1>
+        <p class="lead text-center">A global writing competition.</p>
+        <a class="btn btn-primary btn-lg pull-right" href="#" role="button">Learn more</a>
+    </div>
+</div>
+<div class="container">
+    <h2 class="text-center">Top 10 stories</h2>
+    <div class="container">
+        {% for story in stories %}
+            {{ story.title }}
+        {% endfor %}
+    </div>
+</div>
+<div class="container">
+    <h2 class="text-center">
+        Current Prize Pool
+    </h2>
+</div>
+<div class="container">
+    <h2 class="text-center">
+        Footer
+    </h2>
+</div>
 {% endblock content %}

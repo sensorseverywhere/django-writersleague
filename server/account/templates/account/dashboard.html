@@ -14,8 +14,10 @@
 
 
     {% if user.user_type == 1 %}
+        You are an author
         {% include 'account/author_dashboard.html' %}
     {% else %}
+        You are a voter
         {% include 'account/voter_dashboard.html' %}
     {% endif %}
     <br>
