@@ -4,11 +4,12 @@
 {% block title %}{% endblock title %}
 
 {% block content %}
+
     {% if user.profile.username == '' %}
         Hi, it looks like you need to update your profile. <br>
         <a href="/profile/update/">You can do so here.</a>
     {% else %}
-    Hi {{user.profile.username}}, welcome to your dashboard <br>
+        Hi {{user.profile.username}}, welcome to your dashboard <br>
     {% endif %}
     
 

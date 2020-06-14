@@ -9,7 +9,9 @@
     			<li class='nav-item'>
     				<a class='nav-link dropdown-toggle' href='#' id='userMenu' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false'>
 						{% if user.profile.username %}
-						    Hi, {{ user.profile.username }}
+							Hi, {{ user.profile.username }}
+						{% elif user.email == "admin@writersleague.com" %}
+							Hi Admin,
 						{% else %}
 							Hi, Anonymous User. 
 							<br><small><a href="/profile/update/">Update profile ?</a></small>

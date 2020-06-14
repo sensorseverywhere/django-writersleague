@@ -7,7 +7,7 @@
 
 <div class="d-flex container flex-row justify-content-around">
 {% for plan in plans %}
-
+  <div class="card-deck mb-3 text-center">
     <div class="p-2 card">
       <h4 class="d-flex justify-content-around align-items-center mb-3">
         <span class="text-muted">{{ plan.name }} </span>
@@ -55,6 +55,7 @@
       </form>
       </div>
     </div>
+  </div>
 
 {% endfor %}
 </div>

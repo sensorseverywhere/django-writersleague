@@ -14,7 +14,7 @@
   "fields": {
     "name": "50 Votes",
     "slug": "50-votes",
-    "text": "This is the medium plan",
+    "text": "this is the medium plan",
     "price": "5.00",
     "requires_subscription": false
   }
@@ -24,7 +24,7 @@
   "fields": {
     "name": "100 Votes",
     "slug": "100-votes",
-    "text": "This is the medium plan",
+    "text": "This is the premium plan",
     "price": "10.00",
     "requires_subscription": false
   }
