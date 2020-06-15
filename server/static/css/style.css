@@ -1,7 +1,12 @@
+.navbar-inverse {
+    background-color: #fff;
+}
+
 .home-background {
-    background-image: url('../images/home-background.png');
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center center;
-    height: 464px;
+    background: url('../images/home-background.png') center center fixed no-repeat;
+    -webkit-background-size: contain;
+    -moz-background-size: contain;
+    -o-background-size: contain;
+    background-size: contain;
+    min-height: 480px;
 }
