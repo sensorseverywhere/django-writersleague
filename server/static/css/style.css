@@ -10,3 +10,12 @@
     background-size: contain;
     min-height: 567px;
 }
+
+.section-heading {
+    text-align: center;
+}
+
+.btn-join {
+    color: #fff;
+    background-color: #33b5e5;
+}

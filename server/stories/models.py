@@ -27,6 +27,7 @@ class Story(models.Model):
     author = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name='story')
     status = models.IntegerField(choices=STATUSES, default=DRAFT)
     genre = models.IntegerField(choices=GENRES, default=COMEDY)
+    votes = models.IntegerField(default=0)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
     published_at = models.DateTimeField(auto_now_add=True, blank=True)

@@ -6,9 +6,11 @@ from django.views.generic.edit import FormView
 from django.urls import reverse, reverse_lazy
 
 from .forms import ContactForm
+from account.forms import UserRegistrationForm
 from .models import ContentBlock, NewsItem
 from products.models import Product
 from stories.models import Story
+from account.models import Profile
 
 logger = logging.getLogger(__name__)
 
@@ -21,6 +23,8 @@ class HomePageView(TemplateView):
         context = super(HomePageView, self).get_context_data(**kwargs)
         context['home'] = ContentBlock.objects.all()
         context['stories'] = Story.objects.all()
+        context['users'] = Profile.objects.filter(active=True).count()
+        context['user_form'] = UserRegistrationForm()
         return context
 
 class AboutPageView(TemplateView):

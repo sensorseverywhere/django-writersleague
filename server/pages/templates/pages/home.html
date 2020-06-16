@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 {% load static %}
+{% load crispy_forms_tags %}
 
 {% block title %}Home{% endblock title %}
 
@@ -7,29 +8,104 @@
 <div class="container-fluid">
     <div class="home-background">
         
-        <a class="btn btn-success btn-lg pull-right" href="#" role="button">
+        <a class="btn btn-success btn-lg pull-right" href="#">
             <button class="btn btn-success">
                 Join
             </button>
         </a>
     </div>
 </div>
-<div class="container">
-    <h2 class="text-center">Top 10 stories</h2>
-    <div class="container">
-        {% for story in stories %}
-            {{ story.title }}
-        {% endfor %}
+<section class="container-fluid stats py-5 bg-light">
+    <div class="row d-flex">
+        <div class="col-md-3">
+            <div class="card mb-4 box-shadow text-center">
+                <div class="card-body">
+                    <div class="stats-icon">
+                        <i class="fa fa-users"></i>
+                    </div>
+                    <div class="stats-numbers">
+                        {{ users }} <small class="text-muted">Users</small>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="card mb-4 box-shadow text-center">
+                <div class="card-body">
+                    <div class="stats-icon">
+                        <i class="fa fa-users"></i>
+                    </div>
+                    <div class="stats-numbers">
+                        {{ users }} <small class="text-muted">Votes</small>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="card mb-4 box-shadow text-center">
+                <div class="card-body">
+                    <div class="stats-icon">
+                        <i class="fa fa-users"></i>
+                    </div>
+                    <div class="stats-numbers">
+                        {{ users }} <small class="text-muted">Stories</small>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="card mb-4 box-shadow text-center">
+                <div class="card-body">
+                    <div class="stats-icon">
+                        <i class="fa fa-users"></i>
+                    </div>
+                    <div class="stats-numbers">
+                        {{ users }} <small class="text-muted">Total Prize Pool</small>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-</div>
-<div class="container">
-    <h2 class="text-center">
-        Current Prize Pool
-    </h2>
-</div>
-<div class="container">
-    <h2 class="text-center">
-        Footer
-    </h2>
-</div>
+</section>
+<section class="container-fluid p-5">
+    <header class="section-heading">
+        <h2>Top Stories</h2>
+    </header>
+    <div class="row">
+            <table class="table">
+                <thead>
+                  <tr>
+                    <th scope="col">Title</th>
+                    <th scope="col">Author</th>
+                    <th scope="col">Votes</th>
+                  </tr>
+                </thead>
+                <tbody>
+                {% for story in stories %}
+                    <tr>
+                        <td>{{ story.title }}</td>
+                        <td>{{ story.author }}</td>
+                        <td>{{ story.votes }}</td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</section>
+<section id="about-wl" class="container-fluid p-5">
+    <header class="section-heading">
+        <h2>What are we about?</h2>
+    </header>
+    <div class="col-md-6 offset-3 p-3">
+        Some fantastic copy here...
+    </div>
+    <div class="text-center">
+        <a class="" href="{% url 'register' %}">
+            <button class="btn btn-join">Join</button>
+        </a>
+    </div>
+
+</section>
+
 {% endblock content %}
