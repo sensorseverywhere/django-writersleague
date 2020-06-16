@@ -16,5 +16,6 @@ stripe==2.48.0
 django-anymail[mailgun]==7.1.0
 weasyprint==51
 #Testing
+pytest-cov==2.8.1
 pytest-django==3.9.0
 pytest==5.4.3
