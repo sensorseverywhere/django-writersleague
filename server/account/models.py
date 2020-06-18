@@ -60,7 +60,7 @@ class Guest(models.Model):
 
 class Profile(models.Model):
     user = models.OneToOneField(CustomUser, on_delete=models.CASCADE, related_name="profile")
-    username = models.CharField(max_length=60, unique=True)
+    username = models.CharField(max_length=60, unique=True, default=CustomUser.email)
     preferred_name = models.CharField(max_length=60)
     active = models.BooleanField(default=False)
     first_name = models.CharField(max_length=60, blank=True, null=True)

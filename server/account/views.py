@@ -32,7 +32,7 @@ def register(request):
                 user_form.cleaned_data['password']
             )
             new_user.save()
-            Profile.objects.create(user=new_user)
+            # Profile.objects.create(user=new_user)
             return render(request, 'registration/register_done.html', {'new_user': new_user})
     else:
         user_form = UserRegistrationForm()

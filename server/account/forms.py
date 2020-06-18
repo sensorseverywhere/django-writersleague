@@ -1,8 +1,15 @@
 from django import forms
+from django.contrib.auth import authenticate
+from django.contrib.auth.forms import ( UserCreationForm as DjangoUserCreationForm )
+from django.contrib.auth.forms import UsernameField
+from django.core.mail import send_mail
+import logging
 
 from django.contrib.auth import get_user_model
 
 from .models import Address, CustomUser, Profile
+
+logger = logging.getLogger(__name__)
 
 
 class LoginForm(forms.Form):
@@ -23,6 +30,17 @@ class UserRegistrationForm(forms.ModelForm):
         if cd['password2'] != cd['password']:
             raise forms.ValidationError("Passwords don\'t match.")
         return cd['password2']
+
+    def send_mail(self):
+        logger.info( "Sending signup email for email=%s", self.cleaned_data["email"])
+        message = "Welcome{}".format(self.cleaned_data["email"])
+        send_mail(
+            "Welcome to the Writers League!",
+            message,
+            "user@thewritersleague.com",
+            [self.cleaned_data["email"]],
+            fail_silently=True
+        )
 
 
 class UpdateAccountForm(forms.ModelForm):
