@@ -15,7 +15,7 @@
     text-align: center;
 }
 
-.btn-join {
+.btn-join, .btn-create {
     color: #fff;
     background-color: #33b5e5;
 }

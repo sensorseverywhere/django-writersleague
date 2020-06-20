@@ -1,28 +1,39 @@
-# from django.test import TestCase
-# from ..models import CustomUser
+import pytest
 
 
-# class TestCustomUserModel(TestCase):
+@pytest.mark.django_db
+class TestUser():
+    def setUp(self):
+        self.username = "testuser"
+        self.email = "testuser@testbase.com"
+        self.first_name = "Test"
+        self.last_name = "User"
+        self.password = "Qqqqqq!1"
 
-#     def test_saving_and_retrieving_users(self):
-#         password = 'Qqqqqq!1'
+        self.test_user = User.objects.create_user(
+            username=self.username,
+            email=self.email,
+            first_name=self.first_name,
+            last_name=self.last_name
+        )
 
-#         first_user = CustomUser({
-#             'email': "user2@test.com",
-#             'user_type': 0,
-#             'password': password,
-#             'password2': password
-#         })
-#         first_user.save()
-#         second_user = CustomUser({
-#             'id': 2,
-#             'email': "user2@test.com",
-#             'user_type': 1,
-#             'password': password,
-#             'password2': password
-#         })
-#         second_user.save()
+    def test_create_user(self):
+        assert isinstance(self.test_user, User)
 
-#         saved_users = CustomUser.objects.all()
-#         self.assertEqual(saved_users.count(), 2)
+    def test_default_user_is_active(self):
+        assert self.test_user.is_active
 
+    def test_default_user_is_staff(self):
+        assert not self.test_user.is_staff
+
+    def test_default_user_is_superuser(self):
+        assert not self.test_user.is_superuser
+
+    def test_get_full_name(self):
+        assert self.test_user.get_full_name() == 'Test User'
+
+    def test_get_short_name(self):
+        assert self.test_user.get_short_name() == self.email
+
+    def test_unicode(self):
+        assert self.test_user.__unicode__() == self.username
