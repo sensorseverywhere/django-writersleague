@@ -12,9 +12,9 @@ class AddressAdmin(admin.ModelAdmin):
     list_display = ('address1', 'address2', 'city', 'post_code', 'country')
 
 
-@admin.register(Profile)
-class ProfileAdmin(admin.ModelAdmin):
-    list_display = ('username', 'first_name', 'last_name', 'active')
+# @admin.register(Profile)
+# class ProfileAdmin(admin.ModelAdmin):
+#     list_display = ('username', 'first_name', 'last_name', 'active')
 
 
 @admin.register(CustomUser)

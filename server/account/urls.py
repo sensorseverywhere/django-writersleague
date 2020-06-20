@@ -17,6 +17,6 @@ urlpatterns = [
     path('dashboard/', views.dashboard, name='dashboard'),
     path('account/', views.AccountView.as_view(), name='account_details'),
     path('account/update/', views.update_account, name='update_account'),
-    path('profile/', views.ProfileView.as_view(), name='profile_details'),
-    path('profile/update/', views.update_profile, name='update_profile'),    
+    # path('profile/', views.ProfileView.as_view(), name='profile_details'),
+    # path('profile/update/', views.update_profile, name='update_profile'),    
 ]

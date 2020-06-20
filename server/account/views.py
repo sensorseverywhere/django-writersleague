@@ -4,7 +4,7 @@ from django.contrib.auth import authenticate, login
 from django.contrib.auth.decorators import login_required
 from django.views.generic import TemplateView
 
-from .forms import LoginForm, UpdateAccountForm, UpdateProfileForm, UpdateAddressForm, UserRegistrationForm
+from .forms import LoginForm, UpdateAccountForm, UpdateAddressForm, UserRegistrationForm
 
 from .models import Address, CustomUser, Profile
 from stories.models import Story
@@ -44,7 +44,7 @@ def dashboard(request):
     
     stories = Story.objects.filter(author=request.user)
 
-    return render(request, 'account/dashboard.html', {'stories': stories})
+    return render(request, 'account/dashboard.html', {'stories': stories, 'user': request.user})
 
 
 @login_required
@@ -52,20 +52,19 @@ def update_account(request):
     
     if request.method == 'POST':
         update_account_form = UpdateAccountForm(instance=request.user, data=request.POST)
-        update_address_form = UpdateAddressForm(instance=request.user, data=request.POST)
+   
 
-        if update_account_form.is_valid() and update_address_form.is_valid():
+        if update_account_form.is_valid():
             update_account_form.save()
-            update_address_form.save()
 
-            return HttpResponseRedirect('account/details.html')
+
+            return HttpResponseRedirect(reverse('dashboard'))
     else:
         update_account_form = UpdateAccountForm(instance=request.user)
-        update_address_form = UpdateAddressForm(instance=request.user)
+
     
     return render(request, 'account/update.html', {
-                                            'update_account_form': update_account_form,
-                                            'update_address_form': update_address_form
+                                            'update_account_form': update_account_form
                                             })
 
 
@@ -73,7 +72,7 @@ def update_account(request):
 def update_profile(request):
     if request.method == 'POST':
         update_account_form = UpdateAccountForm(instance=request.user, data=request.POST)
-        update_profile_form = UpdateProfileForm(instance=request.user.profile, data=request.POST)
+        # update_profile_form = UpdateProfileForm(instance=request.user.profile, data=request.POST)
 
         if update_account_form.is_valid() and update_profile_form.is_valid():
             update_account_form.save()
@@ -81,7 +80,7 @@ def update_profile(request):
             return HttpResponseRedirect(reverse('profile_details'))
     else:
         update_account_form = UpdateAccountForm(instance=request.user)
-        update_profile_form = UpdateProfileForm(instance=request.user.profile)
+        # update_profile_form = UpdateProfileForm(instance=request.user.profile)
     
     return render(request, 'profile/update.html', { 
                                         'update_account_form': update_account_form,

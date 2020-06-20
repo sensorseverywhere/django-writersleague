@@ -46,14 +46,14 @@ class UserRegistrationForm(forms.ModelForm):
 class UpdateAccountForm(forms.ModelForm):
     class Meta:
         model = CustomUser
-        fields = ('email',)
+        fields = ('email', 'username')
 
 
 
-class UpdateProfileForm(forms.ModelForm):
-    class Meta:
-        model = Profile
-        fields = ('username', 'first_name', 'last_name')
+# class UpdateProfileForm(forms.ModelForm):
+#     class Meta:
+#         model = Profile
+#         fields = ('username', 'first_name', 'last_name')
 
 
 class UpdateAddressForm(forms.ModelForm):
