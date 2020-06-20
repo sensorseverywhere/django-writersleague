@@ -1,25 +1,17 @@
 from django.contrib import admin
 from django.contrib.auth.admin import UserAdmin as WritersLeagueUserAdmin
 
-from .models import Address, Profile, CustomUser
-
-
-class ProfileInline(admin.StackedInline):
-    model = Profile
+from .models import Address, CustomUser
 
 @admin.register(Address)
 class AddressAdmin(admin.ModelAdmin):
     list_display = ('address1', 'address2', 'city', 'post_code', 'country')
 
 
-# @admin.register(Profile)
-# class ProfileAdmin(admin.ModelAdmin):
-#     list_display = ('username', 'first_name', 'last_name', 'active')
 
 
 @admin.register(CustomUser)
 class UserAdmin(WritersLeagueUserAdmin):
-    inlines = [ProfileInline]
     fieldsets = (
         (None, {"fields": ("email", "password")}),
         ("Personal info", {"fields": ("first_name", "last_name")},),

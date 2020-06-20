@@ -7,7 +7,7 @@ import logging
 
 from django.contrib.auth import get_user_model
 
-from .models import Address, CustomUser, Profile
+from .models import Address, CustomUser
 
 logger = logging.getLogger(__name__)
 
@@ -47,13 +47,6 @@ class UpdateAccountForm(forms.ModelForm):
     class Meta:
         model = CustomUser
         fields = ('email', 'username')
-
-
-
-# class UpdateProfileForm(forms.ModelForm):
-#     class Meta:
-#         model = Profile
-#         fields = ('username', 'first_name', 'last_name')
 
 
 class UpdateAddressForm(forms.ModelForm):

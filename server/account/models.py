@@ -58,17 +58,6 @@ class Guest(models.Model):
     timestamp = models.DateTimeField(auto_now=False, auto_now_add=True)
 
 
-class Profile(models.Model):
-    user = models.OneToOneField(CustomUser, on_delete=models.CASCADE, related_name="profile")
-    preferred_name = models.CharField(max_length=60)
-    active = models.BooleanField(default=False)
-    first_name = models.CharField(max_length=60, blank=True, null=True)
-    last_name = models.CharField(max_length=100, blank=True, null=True)
-
-    def __str__(self):
-        return self.username
-
-
 class Address(models.Model):
     SUPPORTED_COUNTRIES = (
         ("au", "Australia"),

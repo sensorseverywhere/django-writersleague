@@ -6,7 +6,7 @@ from django.views.generic import TemplateView
 
 from .forms import LoginForm, UpdateAccountForm, UpdateAddressForm, UserRegistrationForm
 
-from .models import Address, CustomUser, Profile
+from .models import Address, CustomUser
 from stories.models import Story
 
 
@@ -14,13 +14,6 @@ class AccountView(TemplateView):
     model = CustomUser
     context_object_name = 'user'
     template_name = 'account/details.html'
-
-
-class ProfileView(TemplateView):
-    model = Profile
-    context_object_name = 'user'
-    template_name = 'profile/details.html'
-
 
 def register(request):
     if request.method == 'POST':
@@ -32,7 +25,6 @@ def register(request):
                 user_form.cleaned_data['password']
             )
             new_user.save()
-            # Profile.objects.create(user=new_user)
             return render(request, 'registration/register_done.html', {'new_user': new_user})
     else:
         user_form = UserRegistrationForm()
