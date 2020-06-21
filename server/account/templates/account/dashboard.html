@@ -1,32 +1,31 @@
-{% extends 'dashboard-base.html' %}
+{% extends 'account/dashboard/base.html' %}
 {% load static %}
 
 {% block title %}{% endblock title %}
 
 {% block content %}
-<div class="container-fluid">
-  <div class="row">
-    {% include 'account/dashboard/sidebar.html' %}
+<div class="wrapper">
+  {% include 'account/dashboard/sidebar/nav.html' %}
+
+  <div id="dashboard">
+    {% if user.username == 'anon' %}
+        Hi, it looks like you need to update your profile. <br>
+        <a href="/account/update/">You can do so here.</a>
+    {% else %}
+        Hi {{user}}, welcome to your dashboard <br>
+    {% endif %}
+    
 
 
-                {% if user.username == 'anon' %}
-                    Hi, it looks like you need to update your profile. <br>
-                    <a href="/account/update/">You can do so here.</a>
-                {% else %}
-                    Hi {{user}}, welcome to your dashboard <br>
-                {% endif %}
-                
-            
-            
-                {% if user.user_type == 1 %}
-                    You are an author
-                    {% include 'account/dashboard/author.html' %}
-                {% else %}
-                    You are a voter
-                    {% include 'account/dashboard/voter.html' %}
-                {% endif %}
-                <br>
+    {% if user.user_type == 1 %}
+        You are an author
+        {% include 'account/dashboard/author.html' %}
+    {% else %}
+        You are a voter
+        {% include 'account/dashboard/voter.html' %}
+    {% endif %}
+  </div>
 </div>
-</div>
+
 
 {% endblock content %}
