@@ -1,7 +1,7 @@
 {% extends 'account/dashboard/base.html' %}
 {% load static %}
 
-{% block title %}{% endblock title %}
+{% block title %}Dashboard{% endblock title %}
 
 {% block content %}
 <div class="wrapper">
@@ -12,7 +12,7 @@
         Hi, it looks like you need to update your profile. <br>
         <a href="/account/update/">You can do so here.</a>
     {% else %}
-        Hi {{user}}, welcome to your dashboard <br>
+        Hi {{user.username}}, welcome to your dashboard <br>
     {% endif %}
     
 
