@@ -4,9 +4,12 @@ from django.contrib.auth import authenticate, login
 from django.contrib.auth.decorators import login_required
 from django.views.generic import TemplateView
 
-from .forms import LoginForm, UpdateAccountForm, UpdateAddressForm, UserRegistrationForm
+from rest_framework import generics
 
+from .forms import LoginForm, UpdateAccountForm, UpdateAddressForm, UserRegistrationForm
 from .models import Address, CustomUser
+from .serializers import CustomUserSerializer
+
 from stories.models import Story
 
 
@@ -77,3 +80,8 @@ def update_profile(request):
     return render(request, 'profile/update.html', { 
                                         'update_account_form': update_account_form,
                                         'update_profile_form': update_profile_form })
+
+
+class UserListView(generics.ListAPIView):
+    queryset = CustomUser.objects.all()
+    serializer_class = CustomUserSerializer
