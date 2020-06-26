@@ -26,6 +26,11 @@ class StoryCreateAPIView(generics.ListCreateAPIView):
     serializer_class = StorySerializer
 
 
+class StoryUpdateAPIView(generics.RetrieveUpdateAPIView):
+    queryset = Story.objects.all()
+    serializer_class = StorySerializer
+
+
 class StoryListView(ListView):
     model = Story
     context_object_name = 'stories'

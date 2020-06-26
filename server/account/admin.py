@@ -13,7 +13,7 @@ class AddressAdmin(admin.ModelAdmin):
 @admin.register(CustomUser)
 class UserAdmin(WritersLeagueUserAdmin):
     fieldsets = (
-        (None, {"fields": ("email", "password")}),
+        (None, {"fields": ("email", "password", "user_type")}),
         ("Personal info", {"fields": ("first_name", "last_name")},),
         # ("Permissions", {"fields": ("is_active", "is_staff", "is_superuser", "groups", "user_permissions",)},),
         # ("Important dates", {"fields": ("last_login", "date_joined")},),

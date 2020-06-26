@@ -5,9 +5,11 @@
 {% block title %} Create Story {% endblock title %}
 
 {% block content %}
+<div class="container">
     <h1>Add a new story here</h1>
     <form method='POST'>
         {% csrf_token %}
+        {{form.media}}
         <div class="row">
             <div class="col-12">
                 {{ form.title|as_crispy_field }}
@@ -19,4 +21,6 @@
         </div>
         <input type='submit' value="Let's go!">
     </form>
+</div>
+
 {% endblock content %}

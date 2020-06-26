@@ -1,6 +1,6 @@
-from django.urls import path
+from django.urls import path, re_path
 
-from .views import StoryCreateView, StoryDetailView, StoryListView, StoryCreateAPIView, StoryListAPIView, StoryDetailAPIView
+from .views import StoryCreateView, StoryDetailView, StoryListView, StoryCreateAPIView, StoryListAPIView, StoryDetailAPIView, StoryUpdateAPIView
 
 app_name = 'story'
 
@@ -12,4 +12,5 @@ urlpatterns = [
     path('api/stories/', StoryListAPIView.as_view(), name="api_story_list"),
     path('api/story/<int:pk>/', StoryDetailAPIView.as_view(), name="api_story_detail"),
     path('api/story/create/', StoryCreateAPIView.as_view(), name="api_story_create"),
+    path('api/story/update/<int:pk>/', StoryUpdateAPIView.as_view(), name="api_story_update"),
 ]
