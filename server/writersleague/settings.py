@@ -60,10 +60,6 @@ INSTALLED_APPS = [
     'stories.apps.StoriesConfig',
 ]
 
-
-AUTH_USER_MODEL = 'account.CustomUser'
-
-MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'corsheaders.middleware.CorsMiddleware',
@@ -166,12 +162,12 @@ LOGOUT_URL = 'logout'
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
-MAILGUN_API_BASE_URL="https://api.mailgun.net/v3/d-pkg.com"
+MAILGUN_API_BASE_URL="https://api.mailgun.net/v3/writersleague.com"
 MAILGUN_SERVER_NAME = "smtp.mailgun.org"
 
 ANYMAIL = {
     "MAILGUN_API_KEY": os.environ.get('MAILGUN_API_KEY'),
-    "MAILGUN_SENDER_DOMAIN": 'mg.d-pkg.com', 
+    "MAILGUN_SENDER_DOMAIN": 'mg.writersleague.com', 
 }
 
 APPEND_SLASH=False
