@@ -1,7 +1,7 @@
 
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.http import HttpResponseRedirect
-from django.shortcuts import render, reverse
+from django.shortcuts import render, reverse, redirect
 from django.views.generic import DetailView, ListView
 from django.views.generic.edit import CreateView
 
@@ -51,4 +51,4 @@ class StoryCreateView(LoginRequiredMixin, CreateView):
         self.object = form.save(commit=False)
         self.object.author = self.request.user
         self.object.save()
-        return HttpResponseRedirect(reverse('accounts:dashboard'))
+        return redirect('dashboard')
