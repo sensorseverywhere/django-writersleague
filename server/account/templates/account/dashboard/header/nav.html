@@ -15,7 +15,9 @@
 		</a>
 		<div class="pull-right">
 			{% if user.is_authenticated %}
+				{% if user.username %}
 					Hi, {{ user.username }}
+				{% endif %}
 			{% endif %}
 		</div>
 	</div>

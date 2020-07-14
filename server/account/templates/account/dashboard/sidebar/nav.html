@@ -2,7 +2,9 @@
 
 <nav id="sidebar">
   <ul class="list-unstyled components">
-    <button class="btn btn-create">Create</button>
+    {% if user.user_type == 1 %}
+    <a href="{% url 'story:story_create' %}"><button class="btn btn-create">Create</button></a>
+    {% endif %}
     <li class="active">
         <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Home</a>
         <!-- <ul class="collapse list-unstyled" id="homeSubmenu">

@@ -1,3 +1,19 @@
 {% load static %}
 
-Write something
+<table>
+    <th>Title</th>
+    <th>Content</th>
+    <th>Genre</th>
+    <th>Votes</th>
+
+{% for story in stories %}
+<tbody>
+            <td> {{story.title}}</td>
+            <td>{{story.content}}</td>
+            <td>{{story.genre}}</td>
+            <td>{{story.votes}}</td>
+
+</tbody>
+{% endfor %}
+
+</table>

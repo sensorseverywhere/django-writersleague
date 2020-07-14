@@ -51,4 +51,4 @@ class StoryCreateView(LoginRequiredMixin, CreateView):
         self.object = form.save(commit=False)
         self.object.author = self.request.user
         self.object.save()
-        return HttpResponseRedirect(reverse('story:story_detail', args=[self.object.id]))
+        return HttpResponseRedirect(reverse('accounts:dashboard'))
