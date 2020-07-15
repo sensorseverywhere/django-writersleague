@@ -1,0 +1,21 @@
+.navbar-inverse {
+    background-color: #fff;
+}
+
+.home-background {
+    background: url('../images/home-background.png') center center fixed no-repeat;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    min-height: 800px;
+}
+
+.section-heading {
+    text-align: center;
+}
+
+.btn-join, .btn-create {
+    color: #fff;
+    background-color: #00006f;
+}

@@ -4,7 +4,8 @@ from django.conf import settings
 from django.db import models
 from django.shortcuts import reverse
 
-from mdeditor.fields import MDTextField
+from martor.models import MartorField
+
 
 # Create your models here.
 class Story(models.Model):
@@ -25,7 +26,7 @@ class Story(models.Model):
 
     title = models.CharField(max_length=255)
     slug = models.SlugField(max_length=255)
-    content = MDTextField()
+    content = MartorField()
     author = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name='story')
     status = models.IntegerField(choices=STATUSES, default=DRAFT)
     genre = models.IntegerField(choices=GENRES, default=COMEDY)

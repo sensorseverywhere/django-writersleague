@@ -43,7 +43,7 @@ class CustomUser(AbstractUser):
     )
     username = models.CharField(max_length=60, unique=True)
     email = models.EmailField('email address', unique=True)
-    user_type = models.IntegerField(choices=USER_TYPES, default=VOTER)
+    user_type = models.IntegerField(choices=USER_TYPES, default=AUTHOR)
 
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = []

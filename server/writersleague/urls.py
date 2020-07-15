@@ -22,13 +22,12 @@ urlpatterns = [
     path('plotify/', admin.site.urls),
     path('', include('account.urls')),
     path('', include('cart.urls')),
-    path('mdeditor/', include('mdeditor.urls')),
     path('', include('orders.urls')),
     path('', include('pages.urls')),
     path('', include('payments.urls')),
     path('', include('products.urls')),
     path('', include('stories.urls')),
-
+    path('martor/', include('martor.urls')),
 ]
 if settings.DEBUG:
     # static files (images, css, javascript, etc.)
