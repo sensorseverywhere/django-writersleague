@@ -49,6 +49,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'martor',
     'storages',
+    'debug_toolbar',
 
     #Local
     'account.apps.AccountConfig',
@@ -72,6 +73,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'debug_toolbar.middleware.DebugToolbarMiddleware',
 ]
 
 
@@ -282,7 +284,12 @@ MARTOR_SEARCH_USERS_URL = '/martor/search-user/' # default
 # Markdown Extensions
 # MARTOR_MARKDOWN_BASE_EMOJI_URL = 'https://www.webfx.com/tools/emoji-cheat-sheet/graphics/emojis/'     # from webfx
 MARTOR_MARKDOWN_BASE_EMOJI_URL = 'https://github.githubassets.com/images/icons/emoji/'                  # default from github
-MARTOR_MARKDOWN_BASE_MENTION_URL = 'https://python.web.id/author/'      
+MARTOR_MARKDOWN_BASE_MENTION_URL = 'https://python.web.id/author/'  
+
+#django-debug_toolbar internal ips
+import socket
+hostname, _, ips = socket.gethostbyname_ex(socket.gethostname())
+INTERNAL_IPS = [ip[:-1] + "1" for ip in ips]
 
 LOGGING = {
     'version': 1,

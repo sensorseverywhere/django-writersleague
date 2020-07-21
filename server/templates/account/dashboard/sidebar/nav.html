@@ -1,0 +1,33 @@
+{% load static %}
+
+<nav id="sidebar">
+  <ul class="list-unstyled components">
+    {% if user.user_type == 1 %}
+    <a href="{% url 'story:story_create' %}"><button class="btn btn-create">Create</button></a>
+    {% endif %}
+    <li class="active">
+        <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Home</a>
+        <!-- <ul class="collapse list-unstyled" id="homeSubmenu">
+            <li>
+                <a href="#">Home 1</a>
+            </li>
+            <li>
+                <a href="#">Home 2</a>
+            </li>
+            <li>
+                <a href="#">Home 3</a>
+            </li>
+        </ul> -->
+    </li>
+    <li>
+        <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Stats</a>
+     
+    </li>
+    <li>
+        <a href="#">Marketplace</a>
+    </li>
+    <li>
+        <a href="#">Account</a>
+    </li>
+</ul>
+</nav>
