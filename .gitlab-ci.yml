@@ -60,8 +60,8 @@ deploy:
             "."
         - docker login -u _ -p $HEROKU_AUTH_TOKEN registry.heroku.com
         - docker push $HEROKU_REGISTRY_IMAGE
-        # - python manage.py createsu
-        # - python manage.py loaddata plans.json
+        - python manage.py createsu
+        - python manage.py loaddata plans.json
         - cd ..
         - chmod +x ./release.sh
         - ./release.sh
