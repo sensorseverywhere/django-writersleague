@@ -35,10 +35,10 @@ class CustomUserManager(BaseUserManager):
         return self.get(email=email)
 
 class CustomUser(AbstractUser):
-    VOTER = 0
+    SPONSOR = 0
     AUTHOR = 1
     USER_TYPES = (
-        (VOTER, 'Voter'),
+        (SPONSOR, 'Sponsor'),
         (AUTHOR, 'Author')
     )
     username = models.CharField(max_length=60, unique=True)
