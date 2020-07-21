@@ -225,7 +225,7 @@ else:
     # )
 
 STATICFILES_DIRS = (os.path.join(BASE_DIR, 'static'),)
-X_FRAME_OPTIONS = "SAMEORIGIN"
+X_FRAME_OPTIONS = "DENY"
 CSRF_COOKIE_HTTPONLY = False
 
 STRIPE_SECRET_KEY = os.environ.get("STRIPE_SECRET_KEY")
