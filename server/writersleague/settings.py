@@ -29,9 +29,6 @@ ALLOWED_HOSTS = os.environ.get("DJANGO_ALLOWED_HOSTS").split(" ")
 
 SITE_ID = 1
 
-
-
-
 # Application definition
 
 INSTALLED_APPS = [
@@ -50,6 +47,8 @@ INSTALLED_APPS = [
     'martor',
     'storages',
     'debug_toolbar',
+    # 'allauth',
+    # 'allauth.account',
 
     #Local
     'account.apps.AccountConfig',
