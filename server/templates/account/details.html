@@ -5,7 +5,7 @@
 
 {% block content %}
     <header>
-        <a href="{% url 'dashboard' %}">Dashboard</a>
+        <a href="{% url 'user:dashboard' %}">Dashboard</a>
     </header>
     <h2>Your Account Details:</h2>
     Username: {{ user.username }} <br>
@@ -15,7 +15,7 @@
 
     <br>
     <div>
-        <a href="{% url 'update_account' %}">
+        <a href="{% url 'user:update_account' %}">
             <button class="btn btn-primary">
                 Update Your Account Details
             </button>

@@ -1,6 +1,6 @@
 import pytest
 
-from account.models import CustomUser
+from user.models import CustomUser
 from stories.serializers import StorySerializer
 
 

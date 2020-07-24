@@ -1,5 +1,5 @@
 from django.db import models
-from account.models import CustomUser
+from user.models import CustomUser
 
 class Customer(models.Model):
     user = models.OneToOneField(CustomUser, on_delete=models.CASCADE)

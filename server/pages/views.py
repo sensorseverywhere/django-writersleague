@@ -6,7 +6,7 @@ from django.views.generic.edit import FormView
 from django.urls import reverse, reverse_lazy
 
 from .forms import ContactForm
-from account.forms import UserRegistrationForm
+from user.forms import UserRegistrationForm
 from .models import ContentBlock, NewsItem
 from products.models import Product
 from stories.models import Story

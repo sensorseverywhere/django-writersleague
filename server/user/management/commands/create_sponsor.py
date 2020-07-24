@@ -1,6 +1,6 @@
 import os
 from django.core.management.base import BaseCommand
-from account.models import CustomUser
+from user.models import CustomUser
 
 
 class Command(BaseCommand):

@@ -24,18 +24,18 @@
 				{% endif %}
 			</h4>
 			<ul class="list-unstyled">
-			  <li><a class='text-muted' href='{% url "dashboard" %}'>Dashboard</a></li>
-			  <li><a class='text-muted' href='{% url "account_details" %}'>Account</a></li>
+			  <li><a class='text-muted' href='{% url "user:dashboard" %}'>Dashboard</a></li>
+			  <li><a class='text-muted' href='{% url "user:account_details" %}'>Account</a></li>
 		
-			  <li><a class='text-muted' href='{% url "logout" %}'>Log Out</a></li>
+			  <li><a class='text-muted' href='{% url "user:logout" %}'>Log Out</a></li>
 			</ul>
 			{% else %}
 			<ul class="list-unstyled">
 				<li><a class='text-muted' href='#about-wl'>About</a></li>
 			  </ul>
     		<form class='form-inline ml-auto'>
-    			<a href='{% url "login" %}' class='btn btn-outline-secondary'>Log In</a>
-    			<a href='{% url "register" %}' class='btn btn-primary ml-2'>Sign up</a>
+    			<a href='{% url "user:login" %}' class='btn btn-outline-secondary'>Log In</a>
+    			<a href='{% url "user:register" %}' class='btn btn-primary ml-2'>Sign up</a>
     		</form>
 		 {% endif %}
 		  </div>

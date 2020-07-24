@@ -1,7 +1,7 @@
 import json
 
 import pytest
-from account.models import CustomUser
+from user.models import CustomUser
 from stories.models import Story
 
 

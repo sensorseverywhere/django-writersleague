@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
+    'django.contrib.sites',
     'django.contrib.staticfiles',
 
     #Third Party
@@ -47,11 +48,10 @@ INSTALLED_APPS = [
     'martor',
     'storages',
     'debug_toolbar',
-    # 'allauth',
-    # 'allauth.account',
+
 
     #Local
-    'account.apps.AccountConfig',
+    'user.apps.UserConfig',
     'cart.apps.CartConfig',
     'orders.apps.OrdersConfig',
     'pages.apps.PagesConfig',
@@ -61,7 +61,7 @@ INSTALLED_APPS = [
 ]
 
 
-AUTH_USER_MODEL = 'account.CustomUser'
+AUTH_USER_MODEL = 'user.CustomUser'
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -160,7 +160,7 @@ USE_L10N = True
 
 USE_TZ = True
 
-LOGIN_REDIRECT_URL = 'dashboard'
+LOGIN_REDIRECT_URL = '/dashboard/'
 LOGOUT_REDIRECT_URL = '/'
 LOGIN_URL = 'login'
 LOGOUT_URL = 'logout'
