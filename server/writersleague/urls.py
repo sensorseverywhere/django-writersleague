@@ -20,6 +20,7 @@ from django.conf.urls.static import static
 
 urlpatterns = [
     path('plotify/', admin.site.urls),
+    path('accounts/', include('allauth.urls')),
     path('', include('user.urls')),
     path('', include('cart.urls')),
     path('', include('orders.urls')),

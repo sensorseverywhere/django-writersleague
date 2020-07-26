@@ -48,6 +48,8 @@ INSTALLED_APPS = [
     'martor',
     'storages',
     'debug_toolbar',
+    'allauth',
+    'allauth.account',
 
 
     #Local
@@ -60,6 +62,15 @@ INSTALLED_APPS = [
     'stories.apps.StoriesConfig',
 ]
 
+AUTHENTICATION_BACKENDS = (
+    'django.contrib.auth.backends.ModelBackend',
+    'allauth.account.auth_backends.AuthenticationBackend',
+)
+
+ACCOUNT_EMAIL_REQUIRED=True
+ACCOUNT_EMAIL_VERIFICATION='mandatory'
+ACCOUNT_SESSION_REMEMBER = True
+ACCOUNT_SIGNUP_PASSWORD_ENTER_TWICE = False
 
 AUTH_USER_MODEL = 'user.CustomUser'
 
@@ -162,8 +173,8 @@ USE_TZ = True
 
 LOGIN_REDIRECT_URL = '/dashboard/'
 LOGOUT_REDIRECT_URL = '/'
-LOGIN_URL = 'login'
-LOGOUT_URL = 'logout'
+# LOGIN_URL = 'login'
+# LOGOUT_URL = 'logout'
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
 

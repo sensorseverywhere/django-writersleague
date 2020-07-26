@@ -13,6 +13,9 @@ from .serializers import CustomUserSerializer
 from stories.models import Story
 
 
+from django.contrib import messages
+
+
 class AccountView(TemplateView):
     model = CustomUser
     context_object_name = 'user'

@@ -1,0 +1,10 @@
+{% load i18n %}
+{% load account %}
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-10 offset-1">
+            {% user_display user as user_display %}
+            <p><strong>{% trans "Note" %}:</strong> {% blocktrans %}you are already logged in as {{ user_display }}.{% endblocktrans %}</p>
+        </div>
+    </div>
+</div>
