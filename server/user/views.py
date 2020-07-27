@@ -42,7 +42,7 @@ def dashboard(request):
     
     stories = Story.objects.filter(author=request.user)
 
-    return render(request, 'account/dashboard.html', {'stories': stories, 'user': request.user})
+    return render(request, 'user/dashboard.html', {'stories': stories, 'user': request.user})
 
 
 @login_required

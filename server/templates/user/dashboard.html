@@ -1,13 +1,9 @@
-{% extends 'account/dashboard/base.html' %}
+{% extends 'user/dashboard/base.html' %}
 {% load static %}
 
 {% block title %}Dashboard{% endblock title %}
 
 {% block content %}
-<div class="wrapper">
-  {% include 'account/dashboard/sidebar/nav.html' %}
-
-
   <div id="dashboard">
     <div class="container">
       <div class="row">
@@ -28,9 +24,9 @@
         <div class="col-md-8 offset-2">
           <div class="text-center">
             {% if user.user_type == 1 %}
-                {% include 'account/dashboard/author.html' %}
+                {% include 'user/dashboard/author.html' %}
             {% else %}
-                {% include 'account/dashboard/voter.html' %}
+                {% include 'user/dashboard/voter.html' %}
             {% endif %}
           </div>
         </div>
@@ -38,6 +34,4 @@
     </div>
   </div>
 </div>
-
-
 {% endblock content %}
