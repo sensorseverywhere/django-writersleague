@@ -1,3 +1,4 @@
+from allauth.account.forms import SignupForm
 from django import forms
 from django.contrib.auth import authenticate
 from django.contrib.auth.forms import ( UserCreationForm as DjangoUserCreationForm )
@@ -15,6 +16,19 @@ logger = logging.getLogger(__name__)
 class LoginForm(forms.Form):
     email = forms.EmailField()
     password = forms.CharField(widget=forms.PasswordInput)
+
+
+class WriterLeagueSignupForm(SignupForm):
+    OPTIONS = [
+        ("0", "Sponsor"),
+        ("1", "Author"),
+        ]
+    user_type = forms.ChoiceField(choices=OPTIONS)
+
+    def signup(self, request, user):
+        user.user_type = self.cleaned_data['user_type']
+        user.save()
+        return user
 
 
 class UserRegistrationForm(forms.ModelForm):

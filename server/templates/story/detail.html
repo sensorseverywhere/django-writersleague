@@ -5,6 +5,9 @@
 {% block title %}{{story.title}}{% endblock title %}
 
 {% block content %}
-    {{ story.title }}
-    {{ story.content|markdown|safe }}
+    <div class="container m-3">
+        {{ story.title }}
+        {{ story.content|markdown|safe }}
+    </div>
+
 {% endblock content %}

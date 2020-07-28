@@ -4,15 +4,17 @@
 {% block title %}{% endblock title %}
 
 {% block content %}
-    Most Popular
-    {% for story in stories %}
-        <ul>
-            <li>
-                <a href="{{ story.get_absolute_url }}">{{ story.title }}</a>
-                <small>{{ story }} </small>
-            
-            </li>
-
-        </ul>
-    {% endfor %}
+    <div class="container m-3">
+        {% for story in stories %}
+            <ul>
+                <li>
+                    <a href="{{ story.get_absolute_url }}">{{ story.title }}</a>
+                    <small>{{ story }} </small>
+                
+                </li>
+    
+            </ul>
+        {% endfor %}
+    </div>
+   
 {% endblock content %}

@@ -20,6 +20,7 @@ stripe==2.48.0
 weasyprint==51
 whitenoise==5.1.0
 #Testing
+flake8===3.7.9
 pytest-cov==2.8.1
 pytest-django==3.9.0
 pytest==5.4.3

@@ -71,6 +71,9 @@ ACCOUNT_EMAIL_REQUIRED=True
 ACCOUNT_EMAIL_VERIFICATION='mandatory'
 ACCOUNT_SESSION_REMEMBER = True
 ACCOUNT_SIGNUP_PASSWORD_ENTER_TWICE = False
+ACCOUNT_FORMS = {
+    'signup': 'user.forms.WriterLeagueSignupForm'
+}
 
 AUTH_USER_MODEL = 'user.CustomUser'
 

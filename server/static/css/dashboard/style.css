@@ -4,6 +4,10 @@
     background-color: #fff;
 }
 
+.dashboard-nav-link {
+    color: #fff;
+}
+
 .btn-toggle {
     color: #000;
 }
@@ -18,11 +22,11 @@ p {
     font-size: 1.1em;
     font-weight: 300;
     line-height: 1.7em;
-    color: #7386D5;
+    color: #fff;
 }
 
 a, a:hover, a:focus {
-    color: inherit;
+    color: #777;
     text-decoration: none;
     transition: all 0.3s;
 }
@@ -57,8 +61,8 @@ a, a:hover, a:focus {
     display: block;
 }
 #sidebar ul li a:hover {
-    color: #7386D5;
-    background: #fff;
+    color: #fff;
+    background: #777;
 }
 
 #sidebar ul li.active > a, a[aria-expanded="true"] {
