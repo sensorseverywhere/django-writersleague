@@ -7,13 +7,15 @@
 {% block content %}
 <div class="container-fluid m-3">
     <div class="row">
-        <h1>Log Out</h1>
-        <p>You're about to logout...</p>
-        <form method='POST' action="{% url 'account_logout' %}">
-            {{ form|crispy }}
-            {% csrf_token %}
-            <input class="btn btn-primary" type='submit'>
-        </form>
+        <div class="col-md-10 offset-1">
+            <h1>Log Out</h1>
+            <p>You're about to logout...</p>
+            <form method='POST' action="{% url 'account_logout' %}">
+                {{ form|crispy }}
+                {% csrf_token %}
+                <input class="btn btn-primary" type='submit'>
+            </form>
+        </div>
     </div>
 </div>
 {% endblock content %}
