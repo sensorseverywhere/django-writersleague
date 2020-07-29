@@ -18,16 +18,19 @@ class LoginForm(forms.Form):
     password = forms.CharField(widget=forms.PasswordInput)
 
 
-class WriterLeagueSignupForm(SignupForm):
+class WLSignupForm(SignupForm):
     OPTIONS = [
         ("0", "Sponsor"),
         ("1", "Author"),
         ]
+        
     user_type = forms.ChoiceField(choices=OPTIONS)
 
-    def signup(self, request, user):
-        user.user_type = self.cleaned_data['user_type']
+    def signup(self, request):
+        print(user)
+        # user.user_type = self.cleaned_data['user_type']
         user.save()
+
         return user
 
 

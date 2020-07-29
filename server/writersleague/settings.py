@@ -67,15 +67,6 @@ AUTHENTICATION_BACKENDS = (
     'allauth.account.auth_backends.AuthenticationBackend',
 )
 
-ACCOUNT_EMAIL_REQUIRED=True
-ACCOUNT_EMAIL_VERIFICATION='mandatory'
-ACCOUNT_SESSION_REMEMBER = True
-ACCOUNT_SIGNUP_PASSWORD_ENTER_TWICE = False
-ACCOUNT_FORMS = {
-    'signup': 'user.forms.WriterLeagueSignupForm'
-}
-
-AUTH_USER_MODEL = 'user.CustomUser'
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -176,8 +167,6 @@ USE_TZ = True
 
 LOGIN_REDIRECT_URL = '/dashboard/'
 LOGOUT_REDIRECT_URL = '/'
-# LOGIN_URL = 'login'
-# LOGOUT_URL = 'logout'
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
@@ -228,16 +217,30 @@ if not DEBUG:
     PUBLIC_MEDIA_LOCATION = 'media'
     MEDIA_URL = f'https://{AWS_S3_CUSTOM_DOMAIN}/{PUBLIC_MEDIA_LOCATION}/'
     DEFAULT_FILE_STORAGE = 'writersleague.storage_backends.PublicMediaStorage'
+    ACCOUNT_EMAIL_VERIFICATION = 'mandatory'
 else:
     EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
     STATIC_URL = '/static/'
     STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
     MEDIA_URL = '/media/'
     MEDIA_ROOT = os.path.join(BASE_DIR, 'uploads')
+    ACCOUNT_EMAIL_VERIFICATION = 'none'
     # CORS_ORIGIN_WHITELIST = (
     #     'http://localhost:3000',
     #     'http://localhost:8000',
     # )
+
+
+ACCOUNT_EMAIL_REQUIRED = True
+ACCOUNT_USERNAME_REQUIRED = False
+ACCOUNT_SESSION_REMEMBER = True
+ACCOUNT_SIGNUP_PASSWORD_ENTER_TWICE = False
+ACCOUNT_FORMS = {
+    'signup': 'user.forms.WLSignupForm'
+}
+ACCOUNT_ADAPTER = 'user.adapter.AccountAdapter'
+
+AUTH_USER_MODEL = 'user.CustomUser'
 
 STATICFILES_DIRS = (os.path.join(BASE_DIR, 'static'),)
 X_FRAME_OPTIONS = "DENY"

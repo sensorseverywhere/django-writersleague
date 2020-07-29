@@ -4,34 +4,38 @@
 {% block title %}Dashboard{% endblock title %}
 
 {% block content %}
-  <div id="dashboard mt-5 ml-5">
-    <div class="container">
-      <div class="row">
-        <div class="col-md-8 offset-2">
-          <div class="text-center">
-            {% if user.username == '' %}
-                Hi, it looks like you need to update your profile. <br>
-                If you want to add a username <p><a href="/account/update/"> click here.</a> </p>
-            {% else %}
-                Hi {{user.username}}, welcome to your dashboard <br>
-                Your user id is {{user.id}}
-            {% endif %}
-          </div>
-        </div>
+<div class="container m-3">
+  <div class="row">
+    <div class="col-md-8 offset-2">
+      <div class="text-center">
+        {% if user.username == '' %}
+            Hi, it looks like you need to update your profile. <br>
+            If you want to add a username <p><a href="/account/update/"> click here.</a> </p>
+        {% else %}
+            Hi {{user.username}}, welcome to your dashboard <br>
+            Your user id is {{user.id}}
+        {% endif %}
       </div>
-      <hr>
-      <div class="row mt-5">
-        <div class="col-md-8 offset-2">
-          <div class="text-center">
-            {% if user.user_type == 1 %}
-                {% include 'user/dashboard/author.html' %}
-            {% else %}
-                {% include 'user/dashboard/voter.html' %}
-            {% endif %}
-          </div>
-        </div>
+    </div>
+  </div>
+  <hr>
+  <div class="row mt-5">
+    <div class="col-md-8 offset-2">
+      <div class="text-center">
+        {% if user.user_type == 1 %}
+            {% include 'user/dashboard/author.html' %}
+        {% else %}
+            {% include 'user/dashboard/voter.html' %}
+        {% endif %}
       </div>
     </div>
   </div>
 </div>
+
+  
+</div>
+  <!-- <div id="dashboard mt-5 ml-5">
+    <div class="container">
+     
+</div> -->
 {% endblock content %}

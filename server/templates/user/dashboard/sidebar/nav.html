@@ -9,27 +9,34 @@
     {% endif %}
     <li class="active">
         <a class="dashboard-nav-link" href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Home</a>
-        <!-- <ul class="collapse list-unstyled" id="homeSubmenu">
-            <li>
-                <a href="#">Home 1</a>
-            </li>
-            <li>
-                <a href="#">Home 2</a>
-            </li>
-            <li>
-                <a href="#">Home 3</a>
-            </li>
-        </ul> -->
+
     </li>
     <li>
         <a class="dashboard-nav-link" href="#pageSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Stats</a>
+        <!-- <ul class="collapse list-unstyled" id="homeSubmenu">
+            <li>
+                <a href="#">Content</a>
+            </li>
+            <li>
+                <a href="#">Votes</a>
+            </li>
+            <li>
+                <a href="#">Sales</a>
+            </li>
+        </ul> -->
      
     </li>
     <li>
         <a class="dashboard-nav-link" href="#">Marketplace</a>
     </li>
     <li>
-        <a class="dashboard-nav-link" href="#">Account</a>
+        <a class="dashboard-nav-link" href="#accountSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Account</a>
+        <ul class="collapse list-unstyled" id="accountSubmenu">
+            <li>
+                <a href="{% url 'account_logout' %}">Logout</a>
+            </li>
+
+        </ul>
     </li>
 </ul>
 </nav>
