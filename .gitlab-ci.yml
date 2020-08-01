@@ -43,7 +43,7 @@ test:
     - pip install -r requirements.txt
     # - pip install pytest pytest-django
     # - pytest -p no:warnings
-    - python manage.py check --deploy --fail-level=WARNING
+    # - python manage.py check --deploy --fail-level=WARNING
 deploy:
     stage: deploy
     services:

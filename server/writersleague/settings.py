@@ -41,7 +41,7 @@ INSTALLED_APPS = [
     'django.contrib.sites',
     'django.contrib.staticfiles',
 
-    #Third Party
+    # Third Party
     'corsheaders',
     'crispy_forms',
     'django_extensions',
@@ -53,7 +53,7 @@ INSTALLED_APPS = [
     'allauth.account',
 
 
-    #Local
+    # Local
     'user.apps.UserConfig',
     'cart.apps.CartConfig',
     'orders.apps.OrdersConfig',
@@ -133,10 +133,8 @@ db_from_env = dj_database_url.config(default=DATABASE_URL, conn_max_age=500)
 DATABASES['default'].update(db_from_env)
 
 
-
 # Password validation
 # https://docs.djangoproject.com/en/3.0/ref/settings/#auth-password-validators
-
 AUTH_PASSWORD_VALIDATORS = [
     {
         'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
@@ -171,22 +169,22 @@ LOGOUT_REDIRECT_URL = '/'
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
-MAILGUN_API_BASE_URL="https://api.mailgun.net/v3/writersleague.com"
+MAILGUN_API_BASE_URL = "https://api.mailgun.net/v3/writersleague.com"
 MAILGUN_SERVER_NAME = "smtp.mailgun.org"
 
 ANYMAIL = {
     "MAILGUN_API_KEY": os.environ.get('MAILGUN_API_KEY'),
-    "MAILGUN_SENDER_DOMAIN": 'mg.writersleague.com', 
+    "MAILGUN_SENDER_DOMAIN": 'mg.writersleague.com',
 }
 
-APPEND_SLASH=False
+APPEND_SLASH = False
 
 
 if not DEBUG:
     # EMAIL SETTINGS
-    EMAIL_BACKEND = "anymail.backends.mailgun.EmailBackend" 
-    DEFAULT_FROM_EMAIL = "admin@thewritersleague.com" 
-    SERVER_EMAIL = "admin@thewritersleague.com" 
+    EMAIL_BACKEND = "anymail.backends.mailgun.EmailBackend"
+    DEFAULT_FROM_EMAIL = "admin@thewritersleague.com"
+    SERVER_EMAIL = "admin@thewritersleague.com"
     REST_FRAMEWORK = {
         "DEFAULT_RENDERER_CLASSES": (
             "rest_framework.renderers.JSONRenderer",
@@ -270,11 +268,11 @@ MARTOR_ENABLE_LABEL = False
 # MARTOR_IMGUR_API_KEY   = 'your-api-key'
 
 # Safe Mode
-MARTOR_MARKDOWN_SAFE_MODE = True # default
+MARTOR_MARKDOWN_SAFE_MODE = True
 
 # Markdownify
-MARTOR_MARKDOWNIFY_FUNCTION = 'martor.utils.markdownify' # default
-MARTOR_MARKDOWNIFY_URL = '/martor/markdownify/' # default
+MARTOR_MARKDOWNIFY_FUNCTION = 'martor.utils.markdownify'
+MARTOR_MARKDOWNIFY_URL = '/martor/markdownify/'
 
 # Markdown extensions (default)
 MARTOR_MARKDOWN_EXTENSIONS = [
@@ -295,13 +293,13 @@ MARTOR_MARKDOWN_EXTENSIONS = [
 MARTOR_MARKDOWN_EXTENSION_CONFIGS = {}
 
 # Markdown urls
-MARTOR_UPLOAD_URL = '/martor/uploader/' # default
-MARTOR_SEARCH_USERS_URL = '/martor/search-user/' # default
+MARTOR_UPLOAD_URL = '/martor/uploader/'
+MARTOR_SEARCH_USERS_URL = '/martor/search-user/'
 
 # Markdown Extensions
 # MARTOR_MARKDOWN_BASE_EMOJI_URL = 'https://www.webfx.com/tools/emoji-cheat-sheet/graphics/emojis/'
 MARTOR_MARKDOWN_BASE_EMOJI_URL = 'https://github.githubassets.com/images/icons/emoji/'
-MARTOR_MARKDOWN_BASE_MENTION_URL = 'https://python.web.id/author/'  
+MARTOR_MARKDOWN_BASE_MENTION_URL = 'https://python.web.id/author/'
 
 # django-debug_toolbar internal ips
 hostname, _, ips = socket.gethostbyname_ex(socket.gethostname())
