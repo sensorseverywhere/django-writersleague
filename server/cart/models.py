@@ -4,7 +4,7 @@ from django.core.validators import MinValueValidator
 
 from products.models import Product
 
-# Create your models here.
+
 class Cart(models.Model):
     OPEN = 10
     SUBMITTED = 20
@@ -15,13 +15,14 @@ class Cart(models.Model):
 
     def is_empty(self):
         return self.lineitem_set.all().count() == 0
-    
+
     def count(self):
         return sum(i.quantity for i in self.lineitem_set.all())
 
     def cart_total(self):
         return sum(i.quantity * i.product.price for i in self.lineitem_set.all())
-    
+
+
 class LineItem(models.Model):
     cart = models.ForeignKey(Cart, on_delete=models.CASCADE)
     product = models.ForeignKey(Product, on_delete=models.CASCADE)
@@ -29,4 +30,3 @@ class LineItem(models.Model):
 
     def get_lineitem_total(self):
         return self.product.price * self.quantity
-

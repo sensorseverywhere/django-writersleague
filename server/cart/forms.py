@@ -12,6 +12,7 @@ LineItemFormSet = inlineformset_factory(
     extra=0,
 )
 
+
 class CartAddProductForm(forms.Form):
     quantity = forms.TypedChoiceField(choices=PRODUCT_QUANTITY_CHOICES, coerce=int)
     update = forms.BooleanField(required=False, initial=False, widget=forms.HiddenInput)

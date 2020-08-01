@@ -1,4 +1,5 @@
 from djang.contrib.auth.signals import user_logged_in
+from django.dispatch import receiver
 from .models import Cart
 
 
@@ -16,4 +17,3 @@ def merge_carts_if_found(sender, user, request, **kwargs):
         except Cart.DoesNotExist:
             anon_cart.user = user
             anon_cart.save()
-            
