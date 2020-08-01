@@ -2,9 +2,9 @@ import logging
 
 from django import forms
 from django.core.mail import send_mail
-from django.core.mail import EmailMultiAlternatives
 
 logger = logging.getLogger(__name__)
+
 
 class ContactForm(forms.Form):
     name = forms.CharField(label='First Name', max_length=100)
@@ -18,14 +18,14 @@ class ContactForm(forms.Form):
             self.cleaned_data["name"],
             self.cleaned_data["message"],
             self.cleaned_data["email"],
-            self.cleaned_data["phone"],   
+            self.cleaned_data["phone"],
         )
-        
+
         email = "d-pkg <{0}>".format(self.cleaned_data["email"])
 
         send_mail(
-                  "d-pkg Contact", 
+                  email,
                   message,
-                  "d-pkg <wade@d-pkg.com",
+                  "the Writers League <admin@thewritersleague.com",
                   ["wade_mansell@hotmail.com"]
                   )

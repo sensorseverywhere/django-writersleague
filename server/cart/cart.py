@@ -47,11 +47,10 @@ class Cart(object):
         else:
             self.cart[product_id]['quantity'] += quantity
         self.save()
-
     def save(self):
         # mark session as modified to make sure it gets saved
         self.session.modified = True
-    
+   
     def remove(self, product):
         """
             Remove a product from the cart
@@ -60,10 +59,10 @@ class Cart(object):
         if product_id in self.cart:
             del self.cart[product_id]
             self.save()
-    
+   
     def get_total_price(self):
         return sum(Decimal(item['price']) * item['quantity'] for item in self.cart.values())
-    
+   
     def clear(self):
         del self.session[settings.CART_SESSION_ID]
         self.save()
