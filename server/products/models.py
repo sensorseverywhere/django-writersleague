@@ -5,12 +5,14 @@ from django.core.validators import MaxValueValidator, MinValueValidator
 from django.db import models
 from django.urls import reverse
 
+
 def get_filename_ext(filename):
     base_name = os.path.basename(filename)
     name, ext = os.path.splitext(base_name)
     return name, ext
 
-def upload_image_path(filename='DEFAULT', file_path='', *args, **kwargs ):
+
+def upload_image_path(filename='DEFAULT', file_path='', *args, **kwargs):
     filename_hash = random.randint(1, 34582345)
     name, ext = get_filename_ext(filename)
     new_filename = '{filename_hash}{ext}'.format(filename_hash=filename_hash, ext=ext)
@@ -22,7 +24,7 @@ def upload_image_path(filename='DEFAULT', file_path='', *args, **kwargs ):
         return "products/thumbs/{new_filename}".format(
             new_filename=new_filename
             )
-   
+
 
 # Create your models here.
 class Product(models.Model):
@@ -36,18 +38,18 @@ class Product(models.Model):
     in_stock = models.BooleanField(default=True)
     date_added = models.DateTimeField(auto_now=True, auto_now_add=False)
 
-
     def get_fields(self):
         return [(field.name, field.value_to_string(self)) for field in Product._meta.fields]
-    
+
     def __str__(self):
-    	return self.name
-    
+        return self.name
+
     def get_absolute_url(self):
-    	return reverse('product', args=[str(self.id)])
+        return reverse('product', args=[str(self.id)])
 
     def get_by_natural_key(self, name):
         return self.get(name=name)
+
 
 class ProductImage(models.Model):
     product = models.ForeignKey(Product, on_delete=models.CASCADE)
@@ -71,25 +73,22 @@ class Plan(models.Model):
         return (self.name)
 
 
-    
 class Category(models.Model):
     products = models.ManyToManyField(Product, blank=True)
     name = models.CharField(max_length=32, blank=True, null=True)
     slug = models.SlugField(max_length=48)
     description = models.TextField(blank=True)
     active = models.BooleanField(default=True)
-    
+
     def __str__(self):
-    	return self.name
+        return self.name
 
 
 class Review(models.Model):
     author = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     product = models.ForeignKey(Product, on_delete=models.CASCADE)
-    rating = models.IntegerField(default=1,validators=[MaxValueValidator(5), MinValueValidator(1)])
+    rating = models.IntegerField(default=1, validators=[MaxValueValidator(5), MinValueValidator(1)])
     comment = models.CharField(max_length=512, blank=True, null=True)
-    
-    def __str__(self):
-    	return self.product.name
-    
 
+    def __str__(self):
+        return self.product.name

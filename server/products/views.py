@@ -1,9 +1,9 @@
 from django.conf import settings
 from django.views.generic import DetailView, ListView
-from django.shortcuts import render
 
 from .models import Plan, Product, Review
 from cart.forms import CartAddProductForm
+
 
 # Create your views here.
 class ProductListView(ListView):
@@ -14,6 +14,7 @@ class ProductListView(ListView):
     def get_context_data(self, *args, **kwargs):
         context = super(ProductListView, self).get_context_data(*args, **kwargs)
         return context
+
 
 class ProductDetailView(DetailView):
     model = Product
