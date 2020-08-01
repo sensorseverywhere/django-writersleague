@@ -1,19 +1,16 @@
 import logging
 
-from django.core.mail import send_mail, BadHeaderError
-from django.views.generic import TemplateView, ListView 
+from django.views.generic import TemplateView
 from django.views.generic.edit import FormView
-from django.urls import reverse, reverse_lazy
+from django.urls import reverse_lazy
 
 from .forms import ContactForm
 from user.forms import UserRegistrationForm
-from .models import ContentBlock, NewsItem
-from products.models import Product
+from .models import ContentBlock
 from stories.models import Story
 
 logger = logging.getLogger(__name__)
 
-# Create your views here.
 
 class HomePageView(TemplateView):
     template_name = 'pages/home.html'
@@ -24,6 +21,7 @@ class HomePageView(TemplateView):
         context['stories'] = Story.objects.all()
         context['user_form'] = UserRegistrationForm()
         return context
+
 
 class AboutPageView(TemplateView):
     template_name = "pages/about.html"
@@ -42,8 +40,7 @@ class ContactPageView(FormView):
     def form_valid(self, form):
         form.send_mail()
         return super().form_valid(form)
-    
+
+
 class ThanksPageView(TemplateView):
     template_name = 'pages/thanks.html'
-
-

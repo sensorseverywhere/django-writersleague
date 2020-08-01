@@ -10,6 +10,7 @@ class OrderItemInline(admin.TabularInline):
     model = OrderItem
     raw_id_fields = ['product']
 
+
 def order_pdf(obj):
     return mark_safe('<a href="{}">PDF</a>'.format(
         reverse('orders:admin_order_pdf', args=[obj.id])))

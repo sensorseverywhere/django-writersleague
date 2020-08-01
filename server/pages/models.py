@@ -8,6 +8,7 @@ class PageTemplateTagManager(models.Manager):
     def get_by_natural_key(self, name):
         return self.get(name=name)
 
+
 class PageTemplateTag(models.Model):
     name = models.CharField(max_length=32, unique=True)
 
@@ -16,6 +17,7 @@ class PageTemplateTag(models.Model):
     
     def natural_key(self):
         return (self.name)
+
 
 class ContentBlockManager(models.Model):
     def get_by_natural_key(self, title):
@@ -36,12 +38,14 @@ class ContentBlock(models.Model):
     def natural_key(self):
         return (self.title)
 
+
 class ContentBlockImage(models.Model):
     cb = models.ForeignKey(ContentBlock, on_delete=models.CASCADE)
     image = models.ImageField(upload_to="images")
 
     def __str__(self):
         return self.image
+
 
 class NewsItem(models.Model):
     url = models.CharField(max_length=256)
@@ -54,9 +58,3 @@ class NewsItem(models.Model):
 
     def __str__(self):
         return self.title
-    
-
-
-
-
-
