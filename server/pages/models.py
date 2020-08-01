@@ -1,8 +1,5 @@
 from django.db import models
-from django.conf import settings
-from django.core.validators import MinValueValidator, MaxValueValidator
 
-# Create your models here.
 
 class PageTemplateTagManager(models.Manager):
     def get_by_natural_key(self, name):
@@ -14,7 +11,7 @@ class PageTemplateTag(models.Model):
 
     def __str__(self):
         return self.name
-    
+
     def natural_key(self):
         return (self.name)
 
@@ -31,10 +28,10 @@ class ContentBlock(models.Model):
     active = models.BooleanField(default=False)
     date_added = models.DateTimeField(auto_now_add=True, auto_now=False)
     date_updated = models.DateTimeField(auto_now=True, auto_now_add=False)
-    
+
     def __str__(self):
-    	return self.title
-    
+        return self.title
+
     def natural_key(self):
         return (self.title)
 

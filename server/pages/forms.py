@@ -23,8 +23,9 @@ class ContactForm(forms.Form):
         
         email = "d-pkg <{0}>".format(self.cleaned_data["email"])
 
-        send_mail("d-pkg Contact", message,
-          "d-pkg <wade@d-pkg.com", ["wade_mansell@hotmail.com"])
-
-
-
+        send_mail(
+                  "d-pkg Contact", 
+                  message,
+                  "d-pkg <wade@d-pkg.com",
+                  ["wade_mansell@hotmail.com"]
+                  )
