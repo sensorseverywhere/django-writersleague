@@ -13,7 +13,8 @@ from weasyprint import HTML, CSS
 from weasyprint.fonts import FontConfiguration
 
 
-stripe.api_key="sk_test_owBhMcnDT8wl53B3jVGjf6SP00UgnKsLBG"
+stripe.api_key = "sk_test_owBhMcnDT8wl53B3jVGjf6SP00UgnKsLBG"
+
 
 # Create your views here.
 def create_order(request):
@@ -26,11 +27,16 @@ def create_order(request):
             order.user = request.user
             order.save()
             for item in cart:
-                OrderItem.objects.create(order=order, product=item['product'], price=item['price'], qty=item['quantity'])
+                OrderItem.objects.create(
+                    order=order,
+                    product=item['product'],
+                    price=item['price'],
+                    qty=item['quantity']
+                    )
             cart.clear()
-            #send an email here confirming the order
+            # send an email here confirming the order
             # start payment process
-            request.session['order_id'] = str(order.id)     
+            request.session['order_id'] = str(order.id)
             return redirect(reverse('payments:checkout'))
 
         return
@@ -47,5 +53,9 @@ def admin_order_pdf(request, order_id):
     print(html)
     response = HttpResponse(content_type='application/pdf')
     response['Content-Disposition'] = 'filename="order_{}.pdf"'.format(order.id)
-    HTML(string=html).write_pdf(response, stylesheets=[CSS(settings.STATIC_ROOT + '/css/pdf.css')], font_config=font_config)
+    HTML(string=html).write_pdf(
+        response,
+        stylesheets=[CSS(settings.STATIC_ROOT + '/css/pdf.css')],
+        font_config=font_config
+        )
     return response

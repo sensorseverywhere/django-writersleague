@@ -5,6 +5,7 @@ from django.db import models
 
 from products.models import Product
 
+
 # Create your models here.
 class Order(models.Model):
     """
@@ -14,8 +15,12 @@ class Order(models.Model):
     PAID = 20
     DONE = 30
 
-    STATUSES = ((NEW, "New"),(PAID, "Paid"), (DONE, "Done"))
-    
+    STATUSES = (
+        (NEW, "New"),
+        (PAID, "Paid"),
+        (DONE, "Done")
+        )
+
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     status = models.IntegerField(choices=STATUSES, default=NEW)
@@ -26,7 +31,7 @@ class Order(models.Model):
     billing_address2 = models.CharField(max_length=250, blank=True, null=True)
     billing_post_code = models.CharField(max_length=20, blank=True, null=True)
     billing_city = models.CharField(max_length=100, blank=True, null=True)
-    
+
     shipping_name = models.CharField(max_length=60)
     shipping_address1 = models.CharField(max_length=250, blank=True, null=True)
     shipping_address2 = models.CharField(max_length=250, blank=True, null=True)
@@ -39,10 +44,10 @@ class Order(models.Model):
 
     class Meta:
         ordering = ('-created',)
-    
+
     def __str__(self):
         return 'Order {}'.format(self.id)
-    
+
     def get_total_cost(self):
         return sum(item.get_cost() for item in self.items.all())
 
@@ -56,7 +61,12 @@ class OrderItem(models.Model):
     SENT = 30
     CANCELLED = 40
 
-    STATUSES = ((NEW, "New"),(PROCESSING, "Processing"), (SENT, "Sent"), (CANCELLED, "Cancelled"))
+    STATUSES = (
+        (NEW, "New"),
+        (PROCESSING, "Processing"),
+        (SENT, "Sent"),
+        (CANCELLED, "Cancelled")
+        )
 
     order = models.ForeignKey(Order, related_name='items', on_delete=models.CASCADE)
     product = models.ForeignKey(Product, on_delete=models.PROTECT)
@@ -66,6 +76,6 @@ class OrderItem(models.Model):
 
     def __str__(self):
         return '{}'.format(self.id)
-    
+
     def get_cost(self):
         return self.price * self.qty
