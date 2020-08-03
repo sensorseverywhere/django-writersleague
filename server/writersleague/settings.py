@@ -174,7 +174,7 @@ MAILGUN_SERVER_NAME = "smtp.mailgun.org"
 
 ANYMAIL = {
     "MAILGUN_API_KEY": os.environ.get('MAILGUN_API_KEY'),
-    "MAILGUN_SENDER_DOMAIN": 'mg.thewritersleague.net',
+    "MAILGUN_SENDER_DOMAIN": 'mg.www.thewritersleague.net',
 }
 
 APPEND_SLASH = False
