@@ -4,9 +4,11 @@
 
     <p><a href="{% url 'products:plans' %}">You can buy them here.</a></p>
 {% else %}
-    <h2>Congrats - you're in the League! </h2>    
+    <h2>Congrats - you're in the League! </h2>   
+    
+    {{user.num_votes}}
 
-    <p>You've just purchased {{ votes }} votes.</p>
+    <p>You've just purchased {{user.num_votes}} votes.</p>
 
     <p>Want to buy more? <a href="{% url 'products:plans' %}">You can buy them here.</a></p>
 {% endif %}

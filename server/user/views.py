@@ -12,7 +12,6 @@ from .serializers import CustomUserSerializer
 
 from stories.models import Story
 
-
 from django.contrib import messages
 
 
@@ -38,29 +37,23 @@ def register(request):
 
 
 @login_required
-def dashboard(request):
-    
+def dashboard(request):   
     stories = Story.objects.filter(author=request.user)
-
     return render(request, 'user/dashboard.html', {'stories': stories, 'user': request.user})
 
 
 @login_required
 def update_account(request):
-    
     if request.method == 'POST':
         update_account_form = UpdateAccountForm(instance=request.user, data=request.POST)
    
-
         if update_account_form.is_valid():
             update_account_form.save()
-
 
             return HttpResponseRedirect(reverse('dashboard'))
     else:
         update_account_form = UpdateAccountForm(instance=request.user)
 
-    
     return render(request, 'account/update.html', {
                                             'update_account_form': update_account_form
                                             })

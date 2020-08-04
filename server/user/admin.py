@@ -1,7 +1,7 @@
 from django.contrib import admin
 from django.contrib.auth.admin import UserAdmin as WritersLeagueUserAdmin
 
-from .models import Address, CustomUser, Votes
+from .models import Address, CustomUser
 
 @admin.register(Address)
 class AddressAdmin(admin.ModelAdmin):
@@ -11,7 +11,7 @@ class AddressAdmin(admin.ModelAdmin):
 @admin.register(CustomUser)
 class UserAdmin(WritersLeagueUserAdmin):
     fieldsets = (
-        (None, {"fields": ("email", "password", "user_type")}),
+        (None, {"fields": ("email", "password", "user_type", "num_votes")}),
         ("Personal info", {"fields": ("first_name", "last_name")},),
         # ("Permissions", {"fields": ("is_active", "is_staff", "is_superuser", "groups", "user_permissions",)},),
         # ("Important dates", {"fields": ("last_login", "date_joined")},),
@@ -25,14 +25,13 @@ class UserAdmin(WritersLeagueUserAdmin):
             },
         ),
     )
+    readonly_fields = ("num_votes",)
     list_display = (
         "email",
         "first_name",
         "last_name",
         "is_staff",
+        "num_votes",
     )
     search_fields = ("email", "first_name", "last_name")
     ordering = ("email",)
-
-
-admin.site.register(Votes)

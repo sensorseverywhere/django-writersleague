@@ -44,6 +44,7 @@ class CustomUser(AbstractUser):
     username = models.CharField(max_length=60, unique=True)
     email = models.EmailField('email address', unique=True)
     user_type = models.IntegerField(choices=USER_TYPES, default=AUTHOR)
+    num_votes  = models.PositiveIntegerField(null=True)
 
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = []
@@ -52,11 +53,6 @@ class CustomUser(AbstractUser):
 
     def natural_key(self):
         return (self.email)
-
-
-class Votes(models.Model):
-    user = models.ForeignKey(CustomUser, on_delete=models.CASCADE, related_name='user_votes')
-    num_votes = models.PositiveIntegerField(null=True)
 
 
 class Guest(models.Model):

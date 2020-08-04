@@ -8,7 +8,7 @@ from django.views.generic import TemplateView, DetailView
 from django.views.generic.edit import FormView
 
 from orders.models import Order
-from user.models import Votes
+from user.models import CustomUser
 from .models import Customer
 import stripe
 
@@ -36,10 +36,9 @@ class CheckoutView(LoginRequiredMixin, TemplateView):
                 source=request.POST['stripeToken']
             )
 
-            votes = Votes.objects.create(
-                user = request.user,
-                num_votes = amount / 10
-            )
+            votes = CustomUser.objects.filter(
+                id=request.user.id
+            ).update(num_votes=amount/10)
 
             return redirect(reverse('payments:success'))
         else:
