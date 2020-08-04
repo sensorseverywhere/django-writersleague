@@ -1,10 +1,5 @@
-import json
-import re
 import pytest
 from user.models import CustomUser
-
-
-
 
 
 @pytest.mark.django_db

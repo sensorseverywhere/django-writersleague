@@ -1,24 +1,22 @@
-from django.http import HttpResponse, HttpResponseRedirect
+from django.http import HttpResponseRedirect
 from django.shortcuts import render, reverse
-from django.contrib.auth import authenticate, login
 from django.contrib.auth.decorators import login_required
 from django.views.generic import TemplateView
 
 from rest_framework import generics
 
-from .forms import LoginForm, UpdateAccountForm, UpdateAddressForm, UserRegistrationForm
-from .models import Address, CustomUser
+from .forms import UpdateAccountForm, UserRegistrationForm
+from .models import CustomUser
 from .serializers import CustomUserSerializer
 
 from stories.models import Story
-
-from django.contrib import messages
 
 
 class AccountView(TemplateView):
     model = CustomUser
     context_object_name = 'user'
     template_name = 'account/details.html'
+
 
 def register(request):
     if request.method == 'POST':

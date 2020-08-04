@@ -29,6 +29,7 @@ def test_valid_story_serializer():
     # assert serialzer.data == valid_serializer_data
     # assert serializer.errors == {}
 
+
 def test_invalid_story_serializer():
     invalid_serializer_data = {
         'title': 'Worlds Greatest...',

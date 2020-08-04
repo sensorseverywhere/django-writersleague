@@ -1,5 +1,3 @@
-import json
-
 import pytest
 from user.models import CustomUser
 from stories.models import Story

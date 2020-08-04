@@ -3,6 +3,7 @@ from django.contrib.auth.admin import UserAdmin as WritersLeagueUserAdmin
 
 from .models import Address, CustomUser
 
+
 @admin.register(Address)
 class AddressAdmin(admin.ModelAdmin):
     list_display = ('address1', 'address2', 'city', 'post_code', 'country')

@@ -1,16 +1,12 @@
-import os
-
 from django.conf import settings
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.db import transaction
-from django.shortcuts import render, get_object_or_404, redirect
+from django.shortcuts import redirect
 from django.urls import reverse
-from django.views.generic import TemplateView, DetailView
-from django.views.generic.edit import FormView
+from django.views.generic import TemplateView
 
 from orders.models import Order
 from user.models import CustomUser
-from .models import Customer
 import stripe
 
 
@@ -24,9 +20,9 @@ class CheckoutView(LoginRequiredMixin, TemplateView):
 
     def get_context_data(self, **kwargs):
         context = super(CheckoutView, self).get_context_data(**kwargs)
-        context['publish_key'] = settings.STRIPE_PUBLISHABLE_KEY     
+        context['publish_key'] = settings.STRIPE_PUBLISHABLE_KEY
         return context
-    
+
     def dispatch(self, request, *args, **kwargs):
         if request.method == 'POST':
             amount = int(float(request.POST['amount']))

@@ -1,13 +1,12 @@
 from django import forms
 from django.forms import inlineformset_factory
 from .models import Cart, LineItem
-from products.models import Product
 
 PRODUCT_QUANTITY_CHOICES = [(i, str(i)) for i in range(1, 21)]
 
 LineItemFormSet = inlineformset_factory(
     Cart,
-    LineItem, 
+    LineItem,
     fields=("quantity",),
     extra=0,
 )
