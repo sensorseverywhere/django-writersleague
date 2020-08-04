@@ -44,7 +44,7 @@ class CustomUser(AbstractUser):
     username = models.CharField(max_length=60, unique=True)
     email = models.EmailField('email address', unique=True)
     user_type = models.IntegerField(choices=USER_TYPES, default=AUTHOR)
-    num_votes  = models.PositiveIntegerField(null=True)
+    num_votes  = models.PositiveIntegerField(default=0)
 
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = []

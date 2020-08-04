@@ -2,6 +2,7 @@ import os
 
 from django.conf import settings
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.db import transaction
 from django.shortcuts import render, get_object_or_404, redirect
 from django.urls import reverse
 from django.views.generic import TemplateView, DetailView
@@ -35,14 +36,19 @@ class CheckoutView(LoginRequiredMixin, TemplateView):
                 description='Standard',
                 source=request.POST['stripeToken']
             )
-
-            votes = CustomUser.objects.filter(
-                id=request.user.id
-            ).update(num_votes=amount/10)
-
+            self.update_votes(request.user, amount)
             return redirect(reverse('payments:success'))
         else:
             return super(CheckoutView, self).dispatch(request, *args, **kwargs)
+
+    def update_votes(self, user, amount):
+        with transaction.atomic():
+            num_votes_qs = CustomUser.objects.select_for_update().filter(num_votes=user.num_votes)
+            for votes in num_votes_qs:
+                print(votes)
+                votes.num_votes += amount / 10
+                votes.save()
+
 
 class PaymentSuccessView(LoginRequiredMixin, TemplateView):
     template_name = 'user/dashboard.html'
