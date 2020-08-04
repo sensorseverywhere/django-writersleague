@@ -1,7 +1,15 @@
 
-
+{% if votes == 0 %}
     <span>Looks like you don't have any votes! </span>    
 
     <p><a href="{% url 'products:plans' %}">You can buy them here.</a></p>
+{% else %}
+    <h2>Congrats - you're in the League! </h2>    
+
+    <p>You've just purchased {{ votes }} votes.</p>
+
+    <p>Want to buy more? <a href="{% url 'products:plans' %}">You can buy them here.</a></p>
+{% endif %}
+  
 
       

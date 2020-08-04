@@ -22,20 +22,16 @@ class CheckoutView(LoginRequiredMixin, TemplateView):
 
     def get_context_data(self, **kwargs):
         context = super(CheckoutView, self).get_context_data(**kwargs)
-
-        stripe_price = 100
-        context['stripe_price'] = stripe_price
+        print('CONTEXT: ', context)
         context['publish_key'] = settings.STRIPE_PUBLISHABLE_KEY     
-
         return context
     
     def dispatch(self, request, *args, **kwargs):
         if request.method == 'POST':
-            print('Using dispatch method')
-            # stripe_customer = stripe.Customer.create(email=request.user.email)
+            print(request.POST)
             charge = stripe.Charge.create(
-                amount=500,
-                currency='usd',
+                amount=int(float(request.POST['amount'])),
+                currency='aud',
                 description='Standard',
                 source=request.POST['stripeToken']
             )
@@ -44,12 +40,11 @@ class CheckoutView(LoginRequiredMixin, TemplateView):
         else:
             return super(CheckoutView, self).dispatch(request, *args, **kwargs)
 
-# class PaymentSuccessView(LoginRequiredMixin, TemplateView):
-#     print('paymentsuccessview')
-#     template_name = 'account/dashboard.html'
+class PaymentSuccessView(LoginRequiredMixin, TemplateView):
+    template_name = 'user/dashboard.html'
 
-def payment_success(request):
-    if request.method == 'POST':
-        return render(request, 'payments/checkout.html')
-    else: 
-        return render(request, 'payments/success.html')
+# def payment_success(request):
+#     if request.method == 'POST':
+#         return render(request, 'payments/checkout.html')
+#     else: 
+#         return render(request, 'payments/success.html')

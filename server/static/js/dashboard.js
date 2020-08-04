@@ -3,4 +3,5 @@ $(document).ready(function () {
         $('#sidebar').toggleClass('active');
     });
 
+    console.log('sanity check')
 });

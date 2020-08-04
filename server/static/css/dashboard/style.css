@@ -104,6 +104,10 @@ a[data-toggle="collapse"] {
     transition: all 0.3s;
 }
 
+div.text-center p {
+    color: #212529;
+}
+
 .btn-create {
     color: #fff;
 }

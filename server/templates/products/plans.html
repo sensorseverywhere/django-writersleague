@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 {% load static %}
+{% load convert_price %}
 
 {% block title %} Join {% endblock title %}
 
@@ -22,20 +23,10 @@
         </li>
        
         <li class="list-group-item d-flex justify-content-between">
-          <span>Total (USD)</span>
+          <span>Total (AUD)</span>
           <strong>${{plan.price}}</strong>
         </li>
       </ul>
-
-      <!-- <form class="card p-2" action="{% url 'payments:checkout' %}" method="GET">
-        <div class="input-group">
-          <input type="text" class="form-control" placeholder="Promo code" name="coupon">
-          <input type="hidden" value="{{ plan }}" name="plan" />
-          <div class="input-group-append">
-            <button type="submit" class="btn btn-secondary">Redeem</button>
-          </div>
-        </div>
-      </form> -->
 
       <div class="text-center pt-3">
       <form action="{% url 'payments:checkout' %}" method="POST">
@@ -43,7 +34,7 @@
         <script
           src="https://checkout.stripe.com/checkout.js" class="stripe-button"
           data-key="{{key}}"
-          data-amount="{{stripe_price}}"
+          data-amount="{{plan.price|calc_price:100}}"
           data-name="'The Writers League'"
           data-description="{{ plan.name }} Plan - ${{ plan.price }}"
           data-email="{{ user }}"
@@ -51,6 +42,7 @@
           data-locale="auto">
         </script>
         <input type="hidden" value="{{ plan.name }}" name="plan" />
+        <input type="hidden" value="{{ plan.price|calc_price:100 }}" name="amount" />
         <input type="hidden" value="{{ plan.coupon }}" name="coupon" />
       </form>
       </div>
