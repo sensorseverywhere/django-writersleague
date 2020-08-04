@@ -20,7 +20,6 @@ stripe.api_key = "sk_test_owBhMcnDT8wl53B3jVGjf6SP00UgnKsLBG"
 def create_order(request):
     cart = Cart(request)
     if request.method == 'POST':
-        print(stripe.api_key)
         form = CreateOrderForm(request.POST)
         if form.is_valid():
             order = form.save(commit=False)

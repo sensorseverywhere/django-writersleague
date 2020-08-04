@@ -8,6 +8,7 @@ from django.views.generic import TemplateView, DetailView
 from django.views.generic.edit import FormView
 
 from orders.models import Order
+from user.models import Votes
 from .models import Customer
 import stripe
 
@@ -22,18 +23,22 @@ class CheckoutView(LoginRequiredMixin, TemplateView):
 
     def get_context_data(self, **kwargs):
         context = super(CheckoutView, self).get_context_data(**kwargs)
-        print('CONTEXT: ', context)
         context['publish_key'] = settings.STRIPE_PUBLISHABLE_KEY     
         return context
     
     def dispatch(self, request, *args, **kwargs):
         if request.method == 'POST':
-            print(request.POST)
+            amount = int(float(request.POST['amount']))
             charge = stripe.Charge.create(
-                amount=int(float(request.POST['amount'])),
+                amount=amount,
                 currency='aud',
                 description='Standard',
                 source=request.POST['stripeToken']
+            )
+
+            votes = Votes.objects.create(
+                user = request.user,
+                num_votes = amount / 10
             )
 
             return redirect(reverse('payments:success'))
@@ -42,9 +47,3 @@ class CheckoutView(LoginRequiredMixin, TemplateView):
 
 class PaymentSuccessView(LoginRequiredMixin, TemplateView):
     template_name = 'user/dashboard.html'
-
-# def payment_success(request):
-#     if request.method == 'POST':
-#         return render(request, 'payments/checkout.html')
-#     else: 
-#         return render(request, 'payments/success.html')

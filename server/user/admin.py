@@ -1,8 +1,7 @@
 from django.contrib import admin
 from django.contrib.auth.admin import UserAdmin as WritersLeagueUserAdmin
 
-from .models import Address, CustomUser
-
+from .models import Address, CustomUser, Votes
 
 @admin.register(Address)
 class AddressAdmin(admin.ModelAdmin):
@@ -34,3 +33,6 @@ class UserAdmin(WritersLeagueUserAdmin):
     )
     search_fields = ("email", "first_name", "last_name")
     ordering = ("email",)
+
+
+admin.site.register(Votes)

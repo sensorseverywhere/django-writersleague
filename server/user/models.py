@@ -53,6 +53,12 @@ class CustomUser(AbstractUser):
     def natural_key(self):
         return (self.email)
 
+
+class Votes(models.Model):
+    user = models.ForeignKey(CustomUser, on_delete=models.CASCADE, related_name='user_votes')
+    num_votes = models.PositiveIntegerField(null=True)
+
+
 class Guest(models.Model):
     email = models.EmailField('email address')
     timestamp = models.DateTimeField(auto_now=False, auto_now_add=True)
