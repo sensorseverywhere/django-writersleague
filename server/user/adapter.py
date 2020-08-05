@@ -1,5 +1,4 @@
 from allauth.account.adapter import DefaultAccountAdapter
-from django import forms
 
 
 class AccountAdapter(DefaultAccountAdapter):

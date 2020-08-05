@@ -35,7 +35,7 @@ def register(request):
 
 
 @login_required
-def dashboard(request):   
+def dashboard(request):
     stories = Story.objects.filter(author=request.user)
     return render(request, 'user/dashboard.html', {'stories': stories, 'user': request.user})
 
@@ -44,7 +44,7 @@ def dashboard(request):
 def update_account(request):
     if request.method == 'POST':
         update_account_form = UpdateAccountForm(instance=request.user, data=request.POST)
-   
+
         if update_account_form.is_valid():
             update_account_form.save()
 
@@ -63,17 +63,15 @@ def update_profile(request):
         update_account_form = UpdateAccountForm(instance=request.user, data=request.POST)
         # update_profile_form = UpdateProfileForm(instance=request.user.profile, data=request.POST)
 
-        if update_account_form.is_valid() and update_profile_form.is_valid():
+        if update_account_form.is_valid():
             update_account_form.save()
-            update_profile_form.save()
             return HttpResponseRedirect(reverse('profile_details'))
     else:
         update_account_form = UpdateAccountForm(instance=request.user)
-        # update_profile_form = UpdateProfileForm(instance=request.user.profile)
-    
-    return render(request, 'profile/update.html', { 
-                                        'update_account_form': update_account_form,
-                                        'update_profile_form': update_profile_form })
+
+    return render(request, 'profile/update.html', {
+                                                    'update_account_form': update_account_form
+                                                  })
 
 
 class UserListView(generics.ListAPIView):

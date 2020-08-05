@@ -1,13 +1,9 @@
-import datetime
-
 from django.conf import settings
 from django.db import models
-from django.shortcuts import reverse
 
 from martor.models import MartorField
 
 
-# Create your models here.
 class Story(models.Model):
     DRAFT = 0
     PUBLISHED = 1
@@ -36,13 +32,8 @@ class Story(models.Model):
     published_at = models.DateTimeField(auto_now_add=True, blank=True)
     live = models.BooleanField(default=False)
 
-    # num_votes
-    # author
-
-
     # def get_absolute_url(self):
     #     return reverse('story:story_detail', args={'pk': self.pk})
-
 
     def __str__(self):
         return self.title
