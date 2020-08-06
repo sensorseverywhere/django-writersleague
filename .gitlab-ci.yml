@@ -59,6 +59,7 @@ deploy:
             --tag $HEROKU_REGISTRY_IMAGE
             --file ./Dockerfile.prod
             --build-arg SECRET_KEY=$SECRET_KEY
+            --build-arg DJANGO_ALLOWED_HOSTS=$DJANGO_ALLOWED_HOSTS
             "."
         - docker login -u _ -p $HEROKU_AUTH_TOKEN registry.heroku.com
         - docker push $HEROKU_REGISTRY_IMAGE
