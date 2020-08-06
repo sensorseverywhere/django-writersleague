@@ -13,6 +13,16 @@
 		<link href="{% static 'css/style.css' %}" rel="stylesheet">
 		<link rel="stylesheet" href="https://cdn.jsdelivr.net/simplemde/latest/simplemde.min.css">
 		<title>WritersLeague | {% block title %}{% endblock title %}</title>
+		<!-- Global site tag (gtag.js) - Google Analytics -->
+		<script async src="https://www.googletagmanager.com/gtag/js?id=UA-52832270-8"></script>
+		<script>
+			window.dataLayer = window.dataLayer || [];
+			function gtag(){dataLayer.push(arguments);}
+			gtag('js', new Date());
+
+			gtag('config', 'UA-52832270-8');
+		</script>
+
     </head>
     <body>
     	<main>
