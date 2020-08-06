@@ -1,29 +1,33 @@
 from django.urls import path
 
-from .views import HomePageView, AboutPageView, ContactPageView, ThanksPageView
-
+from . import views
 
 app_name = "pages"
 
 urlpatterns = [
     path(
         '',
-        HomePageView.as_view(),
+        views.ComingSoonPageView.as_view(),
+        name="coming-soon"
+        ),
+    path(
+        'home/',
+        views.HomePageView.as_view(),
         name="home"
         ),
     path(
         'about/',
-        AboutPageView.as_view(),
+        views.AboutPageView.as_view(),
         name="about"
         ),
     path(
         'contact/',
-        ContactPageView.as_view(),
+        views.ContactPageView.as_view(),
         name="contact"
         ),
     path(
         'thanks/',
-        ThanksPageView.as_view(),
+        views.ThanksPageView.as_view(),
         name="thanks"
         ),
 ]

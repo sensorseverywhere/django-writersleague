@@ -12,6 +12,10 @@ from stories.models import Story
 logger = logging.getLogger(__name__)
 
 
+class ComingSoonPageView(TemplateView):
+    template_name = 'pages/coming-soon.html'
+
+
 class HomePageView(TemplateView):
     template_name = 'pages/home.html'
 
