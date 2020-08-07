@@ -11,14 +11,24 @@ urlpatterns = [
         name="story_list"
         ),
     path(
+        'story/<int:pk>/',
+        views.StoryDetailView.as_view(),
+        name="story_detail"
+        ),
+    path(
         'story/create/',
         views.StoryCreateView.as_view(),
         name="story_create"
         ),
     path(
-        'story/<int:pk>/',
-        views.StoryDetailView.as_view(),
-        name="story_detail"
+        'story/update/<int:pk>/',
+        views.StoryUpdateView.as_view(),
+        name="story_update"
+        ),
+    path(
+        'story/delete/<int:pk>/',
+        views.StoryDeleteView.as_view(),
+        name="story_delete"
         ),
 
     path(

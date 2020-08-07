@@ -1,7 +1,7 @@
 
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import redirect
-from django.views.generic import DetailView, ListView
+from django.views.generic import DetailView, ListView, UpdateView, DeleteView
 from django.views.generic.edit import CreateView
 
 from rest_framework import generics
@@ -50,4 +50,21 @@ class StoryCreateView(LoginRequiredMixin, CreateView):
         self.object = form.save(commit=False)
         self.object.author = self.request.user
         self.object.save()
-        return redirect('dashboard')
+        return redirect('user:dashboard')
+
+
+class StoryUpdateView(LoginRequiredMixin, UpdateView):
+    model = Story
+    fields = ['title', 'content', 'genre']
+    template_name = 'story/update.html'
+
+    def form_valid(self, form):
+        self.object = form.save(commit=False)
+        self.object.author = self.request.user
+        self.object.save()
+        return redirect('user:dashboard')
+
+
+class StoryDeleteView(LoginRequiredMixin, DeleteView):
+    model = Story
+    template_name = 'story/delete.html'

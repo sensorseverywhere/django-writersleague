@@ -5,9 +5,13 @@
 {% block title %}{{story.title}}{% endblock title %}
 
 {% block content %}
-    <div class="container m-3">
-        {{ story.title }}
-        {{ story.content|markdown|safe }}
+<div class="container-fluid m-3">
+    <div class="row">
+        <div class="col-md-10 offset-1">
+            {{ story.title }}
+            {{ story.content|markdown|safe }}
+        </div>
     </div>
+</div>
 
 {% endblock content %}

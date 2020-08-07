@@ -6,14 +6,11 @@ from stories.serializers import StorySerializer
 
 @pytest.mark.django_db
 def test_valid_story_serializer():
-    print("PRINT")
     user = CustomUser.objects.create_user(
         "test@test.com",
     )
 
     user = CustomUser.objects.all()
-    print(user)
-    print('alsdkjflaskdjf')
     # valid_serializer_data = {
     #     'title': "World's Greatest...",
     #     'content': "Story Content",
@@ -39,4 +36,3 @@ def test_invalid_story_serializer():
     assert not serializer.is_valid()
     assert serializer.validated_data == {}
     assert serializer.data == invalid_serializer_data
-    print(serializer.errors)

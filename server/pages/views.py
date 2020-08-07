@@ -36,10 +36,10 @@ class AboutPageView(TemplateView):
         return context
 
 
-class ContactPageView(FormView):
+class ContactFormView(FormView):
     template_name = 'pages/contact.html'
     form_class = ContactForm
-    success_url = reverse_lazy("thanks")
+    success_url = reverse_lazy("pages:thanks")
 
     def form_valid(self, form):
         form.send_mail()

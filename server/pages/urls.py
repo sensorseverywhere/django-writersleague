@@ -22,7 +22,7 @@ urlpatterns = [
         ),
     path(
         'contact/',
-        views.ContactPageView.as_view(),
+        views.ContactFormView.as_view(),
         name="contact"
         ),
     path(

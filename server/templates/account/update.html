@@ -5,13 +5,19 @@
 {% block title %}Update your Account details{% endblock title %}
 
 {% block content %}
-    <header>
-        <a href="{% url 'user:dashboard' %}">Dashboard</a>
-    </header>
-    <h2>Update Your </h2>
-    <form method='POST'>
-        {{ update_account_form|crispy }}
-        {% csrf_token %}
-        <input class="btn btn-primary" type='submit' value='Update Account'>
-    </form>
+<div class="container m-3">
+    <div class="row">
+        <div class="col-md-8 offset-2">
+            <header>
+                <a href="{% url 'user:dashboard' %}">Dashboard</a>
+            </header>
+            <h2>Update Your </h2>
+            <form method='POST'>
+                {{ update_account_form|crispy }}
+                {% csrf_token %}
+                <input class="btn btn-primary" type='submit' value='Update Account'>
+            </form>
+        </div>
+    </div>
+</div>
 {% endblock content %}

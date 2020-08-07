@@ -48,7 +48,7 @@ def update_account(request):
         if update_account_form.is_valid():
             update_account_form.save()
 
-            return HttpResponseRedirect(reverse('dashboard'))
+            return HttpResponseRedirect(reverse('user:dashboard'))
     else:
         update_account_form = UpdateAccountForm(instance=request.user)
 
@@ -65,7 +65,7 @@ def update_profile(request):
 
         if update_account_form.is_valid():
             update_account_form.save()
-            return HttpResponseRedirect(reverse('profile_details'))
+            return HttpResponseRedirect(reverse('user:profile_details'))
     else:
         update_account_form = UpdateAccountForm(instance=request.user)
 

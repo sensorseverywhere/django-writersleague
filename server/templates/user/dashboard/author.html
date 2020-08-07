@@ -1,19 +1,25 @@
 {% load static %}
+{% if stories|length == 0 %}
+    Currently 0 stories
+{% else %}
+    <table class="table">
+        <th scope="col">Title</th>
+        <th scope="col">Content</th>
+        <th scope="col">Genre</th>
+        <th scope="col">Votes</th>
+        <th scope="col"></th>
+        <th scope="col"></th>
 
-<table>
-    <th>Title</th>
-    <th>Content</th>
-    <th>Genre</th>
-    <th>Votes</th>
+    {% for story in stories %}
+    <tbody>
+                <td><a href="{% url 'story:story_detail' story.id %}">{{story.title}}</a></td>
+                <td>{{story.content}}</td>
+                <td>{{story.genre}}</td>
+                <td>{{story.votes}}</td>
+                <td><a href="{% url 'story:story_update' story.id %}"><i class="fa fa-pencil-alt"></i></a></td>
+                <td><a href="{% url 'story:story_delete' story.id %}"><i class="fa fa-trash"></i></a></td>
+    </tbody>
+    {% endfor %}
 
-{% for story in stories %}
-<tbody>
-            <td> {{story.title}}</td>
-            <td>{{story.content}}</td>
-            <td>{{story.genre}}</td>
-            <td>{{story.votes}}</td>
-
-</tbody>
-{% endfor %}
-
-</table>
+    </table>
+{% endif %}
