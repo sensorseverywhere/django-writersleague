@@ -22,8 +22,15 @@ build:
         --cache-from $IMAGE:latest
         --tag $IMAGE:latest
         --file ./Dockerfile.prod
+        --build-arg DEBUG=$DEBUG
         --build-arg SECRET_KEY=$SECRET_KEY
         --build-arg DJANGO_ALLOWED_HOSTS=$DJANGO_ALLOWED_HOSTS
+        --build-arg MAILGUN_API_KEY=$MAILGUN_API_KEY
+        --build-arg STRIPE_SECRET_KEY=$STRIPE_SECRET_KEY
+        --build-arg STRIPE_PUBLISHABLE_KEY=$STRIPE_PUBLISHABLE_KEY
+        --build-arg AWS_ACCESS_KEY_ID=$AWS_ACCESS_KEY_ID
+        --build-arg AWS_SECRET_ACCESS_KEY=$AWS_SECRET_ACCESS_KEY
+        --build-arg AWS_STORAGE_BUCKET_NAME=$AWS_STORAGE_BUCKET_NAME
         "."
     - docker push $IMAGE:latest
 
@@ -56,12 +63,18 @@ deploy:
     script:
         - apk add --no-cache curl
         - cd server
-        - echo $DJANGO_ALLOWED_HOSTS
         - docker build
             --tag $HEROKU_REGISTRY_IMAGE
             --file ./Dockerfile.prod
+            --build-arg DEBUG=$DEBUG
             --build-arg SECRET_KEY=$SECRET_KEY
             --build-arg DJANGO_ALLOWED_HOSTS=$DJANGO_ALLOWED_HOSTS
+            --build-arg MAILGUN_API_KEY=$MAILGUN_API_KEY
+            --build-arg STRIPE_SECRET_KEY=$STRIPE_SECRET_KEY
+            --build-arg STRIPE_PUBLISHABLE_KEY=$STRIPE_PUBLISHABLE_KEY
+            --build-arg AWS_ACCESS_KEY_ID=$AWS_ACCESS_KEY_ID
+            --build-arg AWS_SECRET_ACCESS_KEY=$AWS_SECRET_ACCESS_KEY
+            --build-arg AWS_STORAGE_BUCKET_NAME=$AWS_STORAGE_BUCKET_NAME
             "."
         - docker login -u _ -p $HEROKU_AUTH_TOKEN registry.heroku.com
         - docker push $HEROKU_REGISTRY_IMAGE
