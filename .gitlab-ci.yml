@@ -84,12 +84,12 @@ deploy:
         - cd ..
         - chmod +x ./release.sh
         - ./release.sh
-        - echo DEBUG
-        - echo SECRET_KEY
-        - echo DJANGO_ALLOWED_HOSTS
-        - echo MAILGUN_API_KEY
-        - echo STRIPE_SECRET_KEY
-        - echo STRIPE_PUBLISHABLE_KEY
-        - echo AWS_ACCESS_KEY_ID
-        - echo AWS_SECRET_ACCESS_KEY
-        - echo AWS_STORAGE_BUCKET_NAME
+        - echo $DEBUG
+        - echo $SECRET_KEY
+        - echo $DJANGO_ALLOWED_HOSTS
+        - echo $MAILGUN_API_KEY
+        - echo $STRIPE_SECRET_KEY
+        - echo $STRIPE_PUBLISHABLE_KEY
+        - echo $AWS_ACCESS_KEY_ID
+        - echo $AWS_SECRET_ACCESS_KEY
+        - echo $AWS_STORAGE_BUCKET_NAME
