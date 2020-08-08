@@ -24,7 +24,6 @@ build:
         --file ./Dockerfile.prod
         --build-arg DEBUG=$DEBUG
         --build-arg SECRET_KEY=$SECRET_KEY
-        --build-arg DJANGO_ALLOWED_HOSTS=$DJANGO_ALLOWED_HOSTS
         --build-arg MAILGUN_API_KEY=$MAILGUN_API_KEY
         --build-arg STRIPE_SECRET_KEY=$STRIPE_SECRET_KEY
         --build-arg STRIPE_PUBLISHABLE_KEY=$STRIPE_PUBLISHABLE_KEY
@@ -69,7 +68,6 @@ deploy:
             --file ./Dockerfile.prod
             --build-arg DEBUG=$DEBUG
             --build-arg SECRET_KEY=$SECRET_KEY
-            --build-arg DJANGO_ALLOWED_HOSTS=$DJANGO_ALLOWED_HOSTS
             --build-arg MAILGUN_API_KEY=$MAILGUN_API_KEY
             --build-arg STRIPE_SECRET_KEY=$STRIPE_SECRET_KEY
             --build-arg STRIPE_PUBLISHABLE_KEY=$STRIPE_PUBLISHABLE_KEY
@@ -86,7 +84,6 @@ deploy:
         - ./release.sh
         - echo $DEBUG
         - echo $SECRET_KEY
-        - echo $DJANGO_ALLOWED_HOSTS
         - echo $MAILGUN_API_KEY
         - echo $STRIPE_SECRET_KEY
         - echo $STRIPE_PUBLISHABLE_KEY
