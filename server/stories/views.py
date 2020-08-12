@@ -97,19 +97,27 @@ class StoryDownVoteView(LoginRequiredMixin, UpdateView):
 
     def form_valid(self, form):
         user = CustomUser.objects.get(pk=self.request.user.id)
+        user_story_votes = UserStoryVotes.objects.filter(voter=self.request.user, story=self.object)
+        votes_user_has = user_story_votes.count()
         num_votes = user.num_votes
         try:
-            num_votes = num_votes + 1
-            user.num_votes = num_votes
-            user.save()
-            id = self.object.id
-            story = Story.objects.get(pk=id)
+            if votes_user_has > 0:
+                # remove one user_story_votes record
+                UserStoryVotes.objects.filter(voter=self.request.user, story=self.object).last().delete()
+                
+                num_votes = num_votes + 1
+                user.num_votes = num_votes
+                user.save()
+                id = self.object.id
+                story = Story.objects.get(pk=id)
 
-            votes = story.votes
-            self.object = form.save(commit=False)
-            self.object.votes = votes - 1
-            self.object = form.save()
-            messages.success(self.request, "You have {0} votes left".format(num_votes))
+                votes = story.votes
+                self.object = form.save(commit=False)
+                self.object.votes = votes - 1
+                self.object = form.save()
+                messages.success(self.request, "You have {0} votes left".format(num_votes))
+            else:
+                messages.error(self.request, "You have already removed all your votes from this story.")
 
         except ValueError:
             messages.error(self.request, "You don't have enough votes for this transaction.")
