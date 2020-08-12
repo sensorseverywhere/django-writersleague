@@ -45,14 +45,14 @@ class StoryDetailView(DetailView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        user_story_votes = UserStoryVotes.objects.filter(voter=self.request.user, story=self.object)
+        
         if self.request.user.is_authenticated:
             user = self.request.user
+            user_story_votes = UserStoryVotes.objects.filter(voter=self.request.user, story=self.object)
             context['num_votes'] = user.num_votes
+            context['votes'] = user_story_votes.count()
         context['upvote_form'] = UpVoteForm()
         context['downvote_form'] = DownVoteForm()
-
-        context['votes'] = user_story_votes.count()
 
         return context
 

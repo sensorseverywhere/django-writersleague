@@ -13,9 +13,11 @@
                 <div class="col-md-11">
                     {{ story.content|markdown|safe }}
                 </div>
-                {% if user.is_authenticated %}
+ 
                 <div class="col-md-1 d-flex flex-column">
-                    <form method='POST' action="{% url 'story:story_upvote' story.id %}"
+                    {% if user.is_authenticated %}
+                    tets
+                    <!-- <form method='POST' action="{% url 'story:story_upvote' story.id %}"
                         class="d-flex justify-content-center">
                         {{ upvote_form.as_p }}
                         {% csrf_token %}
@@ -29,16 +31,16 @@
                         {{ downvote_form.as_p }}
                         {% csrf_token %}
                         <button class="downvote-btn" type='submit'><i class="fa fa-caret-down fa-2x"></i></button>
-                    </form>
+                    </form> -->
 
                     {% else %}
-                    <a href="#" class="d-flex justify-content-center">
+                    <a href="#" class="d-flex justify-content-center" data-tooltip="Login to vote!">
                         <i class="fa fa-caret-up fa-2x"></i>
                     </a>
                     <span class="d-flex justify-content-center">
                         {{ story.votes }}
                     </span>
-                    <a href="#" class="d-flex justify-content-center">
+                    <a href="#" class="d-flex justify-content-center" data-tooltip="Login to vote!">
                         <i class="fa fa-caret-down fa-2x"></i>
                     </a>
 
