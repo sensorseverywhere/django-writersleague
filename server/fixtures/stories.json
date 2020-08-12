@@ -1,0 +1,53 @@
+[
+    {
+      "model": "stories.story",
+      "pk": 1,
+      "fields": {
+        "title": "Story One",
+        "slug": "",
+        "content": "This is story one\r\n# Markdown to boot",
+        "author": 1,
+        "status": 0,
+        "genre": 2,
+        "votes": 0,
+        "created_at": "2020-08-11T01:22:38.975Z",
+        "updated_at": "2020-08-11T01:22:38.975Z",
+        "published_at": "2020-08-11T01:22:38.975Z",
+        "live": false
+      }
+    },
+    {
+        "model": "stories.story",
+        "pk": 2,
+        "fields": {
+          "title": "Story Two",
+          "slug": "",
+          "content": "This is story two\r\n## Markdown to boot",
+          "author": 1,
+          "status": 0,
+          "genre": 2,
+          "votes": 1,
+          "created_at": "2020-08-11T01:22:38.975Z",
+          "updated_at": "2020-08-11T01:22:38.975Z",
+          "published_at": "2020-08-11T01:22:38.975Z",
+          "live": false
+        }
+    },
+    {
+        "model": "stories.story",
+        "pk": 3,
+        "fields": {
+          "title": "Story Three",
+          "slug": "",
+          "content": "This is story three\r\n### Markdown to boot",
+          "author": 1,
+          "status": 0,
+          "genre": 3,
+          "votes": 3,
+          "created_at": "2020-08-11T01:22:38.975Z",
+          "updated_at": "2020-08-11T01:22:38.975Z",
+          "published_at": "2020-08-11T01:22:38.975Z",
+          "live": false
+        }
+      }
+]

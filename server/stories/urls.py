@@ -16,6 +16,16 @@ urlpatterns = [
         name="story_detail"
         ),
     path(
+        'story/<int:pk>/upvote/',
+        views.StoryUpVoteView.as_view(),
+        name="story_upvote"
+    ),
+    path(
+        'story/<int:pk>/downvote/',
+        views.StoryDownVoteView.as_view(),
+        name="story_downvote"
+    ),
+    path(
         'story/create/',
         views.StoryCreateView.as_view(),
         name="story_create"
