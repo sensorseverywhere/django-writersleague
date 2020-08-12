@@ -33,7 +33,7 @@ class CheckoutView(LoginRequiredMixin, TemplateView):
                 source=request.POST['stripeToken']
             )
             self.update_votes(request.user, amount)
-            return redirect(reverse('payments:success'))
+            return redirect(reverse('user:dashboard'))
         else:
             return super(CheckoutView, self).dispatch(request, *args, **kwargs)
 

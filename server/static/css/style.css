@@ -19,3 +19,11 @@
     color: #fff;
     background-color: #00006f;
 }
+
+label[for="id_votes"] {
+    display: none;
+}
+
+input#id_votes {
+    display: none;
+}

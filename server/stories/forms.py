@@ -11,20 +11,6 @@ class StoryCreateForm(forms.ModelForm):
 
 
 class UpVoteForm(forms.ModelForm):
-
-    # user = forms.ModelChoiceField(
-    #     widget=forms.HiddenInput,
-    #     queryset=get_user_model().objects.all(),
-    #     disabled=True,
-    # )
-
-    # votes = forms.ModelChoiceField(
-    #     widget=forms.HiddenInput,
-    #     queryset=Story.objects.all(),
-    #     disabled=True
-    # )
-
-
     class Meta:
         model = Story
         fields = ('votes',)

@@ -9,7 +9,7 @@ from django.views.generic.edit import CreateView
 from rest_framework import generics
 
 from .forms import UpVoteForm, DownVoteForm
-from .models import Story
+from .models import Story, UserStoryVotes
 from .serializers import StorySerializer
 from user.models import CustomUser
 
@@ -45,11 +45,14 @@ class StoryDetailView(DetailView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
+        user_story_votes = UserStoryVotes.objects.filter(voter=self.request.user, story=self.object)
         if self.request.user.is_authenticated:
             user = self.request.user
             context['num_votes'] = user.num_votes
         context['upvote_form'] = UpVoteForm()
         context['downvote_form'] = DownVoteForm()
+
+        context['votes'] = user_story_votes.count()
 
         return context
 
@@ -60,26 +63,30 @@ class StoryUpVoteView(LoginRequiredMixin, UpdateView):
     # template_name = 'story/upvote.html'
 
     def form_valid(self, form):
+        id = self.object.id
         user = CustomUser.objects.get(pk=self.request.user.id)
+        user_story_votes = UserStoryVotes.objects.create(voter=user, story=self.object, votes=1)
         num_votes = user.num_votes
         try:
             if num_votes >= 1:
                 num_votes = num_votes - 1
                 user.num_votes = num_votes
                 user.save()
-                id = self.object.id
                 story = Story.objects.get(pk=id)
 
                 votes = story.votes
                 self.object = form.save(commit=False)
                 self.object.votes = votes + 1
                 self.object = form.save()
+
                 messages.success(self.request, "You have {0} votes left".format(num_votes))
+
             else: 
-                messages.error(self.request, "You don't have enough votes for this transaction.")
+                messages.error(self.request, "You don't have enough votes for this transaction. If you like, you can purchase more below.")
+                return redirect('products:plans')
         except ValueError:
             messages.error(self.request, "You don't have enough votes for this transaction.")
-            return redirect('payments:plans')
+            return redirect('products:plans')
 
         return redirect('user:dashboard')
 
@@ -89,13 +96,26 @@ class StoryDownVoteView(LoginRequiredMixin, UpdateView):
     form_class = DownVoteForm
 
     def form_valid(self, form):
-        id = self.object.id
-        story = Story.objects.get(pk=id)
-        votes = story.votes
-        self.object = form.save(commit=False)
-        self.object.votes = votes - 1
-        self.object = form.save()
-        return redirect('user:dashboard') 
+        user = CustomUser.objects.get(pk=self.request.user.id)
+        num_votes = user.num_votes
+        try:
+            num_votes = num_votes + 1
+            user.num_votes = num_votes
+            user.save()
+            id = self.object.id
+            story = Story.objects.get(pk=id)
+
+            votes = story.votes
+            self.object = form.save(commit=False)
+            self.object.votes = votes - 1
+            self.object = form.save()
+            messages.success(self.request, "You have {0} votes left".format(num_votes))
+
+        except ValueError:
+            messages.error(self.request, "You don't have enough votes for this transaction.")
+            return redirect('products:plans')
+
+        return redirect('user:dashboard')
 
 
 class StoryCreateView(LoginRequiredMixin, CreateView):

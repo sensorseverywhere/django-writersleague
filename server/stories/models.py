@@ -37,3 +37,12 @@ class Story(models.Model):
 
     def __str__(self):
         return self.title
+
+
+class UserStoryVotes(models.Model):
+    voter = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+    story = models.ForeignKey(Story, on_delete=models.CASCADE)
+    votes = models.PositiveIntegerField(default=0)
+    
+    def __str__(self):
+        return str(self.votes)

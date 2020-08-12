@@ -10,18 +10,18 @@
         <div class="col-md-10 offset-1">
             <h2>{{ story.title }}</h2>
             <div class="row">
-                <div class="col-md-11">
+                <div class="col-md-10">
                     {{ story.content|markdown|safe }}
                 </div>
-                <div class="col-md-1 d-flex flex-column">
+                <div class="col-md-2 d-flex flex-column">
                     <form method='POST' action="{% url 'story:story_upvote' story.id %}"> 
                         {{ upvote_form.as_p }}
                         {% csrf_token %}
                         <input class="btn" type='submit' value='up'>
                     </form>
                     <span class="d-flex justify-content-center">
-                        {{ story.votes }}
-                        <p>num votes {{num_votes}}</p> 
+                        <!-- {{ story.votes }} -->
+                        <p>user story votes {{votes}}</p> 
                     </span> 
                     <form method='POST' action="{% url 'story:story_downvote' story.id %}">
                         {{ downvote_form.as_p }}
