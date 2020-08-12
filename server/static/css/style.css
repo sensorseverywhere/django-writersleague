@@ -27,3 +27,13 @@ label[for="id_votes"] {
 input#id_votes {
     display: none;
 }
+
+.upvote-btn, .downvote-btn {
+    background-color: transparent;
+    border: 0;
+    color: #009688;
+}
+
+.vote-count {
+    padding-bottom: 15px;
+}

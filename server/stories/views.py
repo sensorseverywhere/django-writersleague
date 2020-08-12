@@ -87,8 +87,10 @@ class StoryUpVoteView(LoginRequiredMixin, UpdateView):
         except ValueError:
             messages.error(self.request, "You don't have enough votes for this transaction.")
             return redirect('products:plans')
-
-        return redirect('user:dashboard')
+        if user.user_type == 1:
+            return redirect('user:dashboard')
+        else: 
+            return redirect('story:story_detail', pk=self.object.id)
 
 
 class StoryDownVoteView(LoginRequiredMixin, UpdateView):
@@ -123,7 +125,10 @@ class StoryDownVoteView(LoginRequiredMixin, UpdateView):
             messages.error(self.request, "You don't have enough votes for this transaction.")
             return redirect('products:plans')
 
-        return redirect('user:dashboard')
+        if user.user_type == 1:
+            return redirect('user:dashboard')
+        else: 
+            return redirect('story:story_detail', pk=self.object.id)
 
 
 class StoryCreateView(LoginRequiredMixin, CreateView):

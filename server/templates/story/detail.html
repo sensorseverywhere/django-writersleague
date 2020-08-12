@@ -10,26 +10,28 @@
         <div class="col-md-10 offset-1">
             <h2>{{ story.title }}</h2>
             <div class="row">
-                <div class="col-md-10">
+                <div class="col-md-11">
                     {{ story.content|markdown|safe }}
                 </div>
-                <div class="col-md-2 d-flex flex-column">
-                    <form method='POST' action="{% url 'story:story_upvote' story.id %}"> 
+                {% if user.is_authenticated %}
+                <div class="col-md-1 d-flex flex-column">
+                    <form method='POST' action="{% url 'story:story_upvote' story.id %}"
+                        class="d-flex justify-content-center">
                         {{ upvote_form.as_p }}
                         {% csrf_token %}
-                        <input class="btn" type='submit' value='up'>
+                        <button class="upvote-btn" type='submit'><i class="fa fa-caret-up fa-2x"></i></button>
                     </form>
-                    <span class="d-flex justify-content-center">
-                        <!-- {{ story.votes }} -->
-                        <p>user story votes {{votes}}</p> 
-                    </span> 
-                    <form method='POST' action="{% url 'story:story_downvote' story.id %}">
+                    <span class="d-flex justify-content-center vote-count">
+                        {{ story.votes }}
+                    </span>
+                    <form method='POST' action="{% url 'story:story_downvote' story.id %}"
+                        class="d-flex justify-content-center">
                         {{ downvote_form.as_p }}
                         {% csrf_token %}
-                        <input class="btn" type='submit' value='down'>
+                        <button class="downvote-btn" type='submit'><i class="fa fa-caret-down fa-2x"></i></button>
                     </form>
-                  
-                    {% if user.is_authenticated %}
+
+                    {% else %}
                     <a href="#" class="d-flex justify-content-center">
                         <i class="fa fa-caret-up fa-2x"></i>
                     </a>
@@ -39,11 +41,11 @@
                     <a href="#" class="d-flex justify-content-center">
                         <i class="fa fa-caret-down fa-2x"></i>
                     </a>
-                    
+
                     {% endif %}
                 </div>
             </div>
-           
+
         </div>
     </div>
 </div>
