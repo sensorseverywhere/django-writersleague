@@ -1,4 +1,3 @@
-from django.core import mail
 from django.test import TestCase
 
 from pages.forms import ContactForm
@@ -9,10 +8,10 @@ class TestContactForm(TestCase):
 
         form = ContactForm(
             {
-                "name":"user",
-                "message":"message",
-                "email":"user@email.com",
-                "phone":"0982343534"
+                "name": "user",
+                "message": "message",
+                "email": "user@email.com",
+                "phone": "0982343534"
             }
         )
 

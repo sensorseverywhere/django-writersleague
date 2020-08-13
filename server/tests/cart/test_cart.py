@@ -16,7 +16,7 @@ def test_add_to_cart(client):
         price=1.00,
         stock_qty=5,
         active=True,
-        in_stock=True 
+        in_stock=True
     )
     product.save()
     assert product.name == "Test Product"

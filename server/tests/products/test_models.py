@@ -11,7 +11,7 @@ def test_product_model(client):
         price=1.00,
         stock_qty=5,
         active=True,
-        in_stock=True 
+        in_stock=True
     )
     product.save()
     assert product.name == "Test Product"
@@ -61,7 +61,7 @@ def test_review_model(client):
         price=1.00,
         stock_qty=5,
         active=True,
-        in_stock=True 
+        in_stock=True
     )
     product.save()
     r = Review(
