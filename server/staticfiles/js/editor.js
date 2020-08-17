@@ -1,4 +1,3 @@
-$(document).ready(function () {
-
-    $('.simplemde-box')[0].SimpleMDE
-});
+document.addEventListener('DOMContentLoaded', function() {
+    console.log('document is ready. I can sleep now');
+ });

@@ -4,8 +4,12 @@
     background-color: #fff;
 }
 
+.dashboard-nav-link {
+    color: #fff;
+}
+
 .btn-toggle {
-    color: #00006f;
+    color: #000;
 }
 
 body {
@@ -18,17 +22,17 @@ p {
     font-size: 1.1em;
     font-weight: 300;
     line-height: 1.7em;
-    color: #7386D5;
+    color: #fff;
 }
 
 a, a:hover, a:focus {
-    color: inherit;
+    color: #777;
     text-decoration: none;
     transition: all 0.3s;
 }
 
 #sidebar {
-    background: #00006f;
+    background: #000;
     color: #fff;
     transition: all 0.3s;
     min-width: 250px;
@@ -38,7 +42,7 @@ a, a:hover, a:focus {
 
 #sidebar .sidebar-header {
     padding: 20px;
-    background: #00006f;
+    background: #000;
 }
 
 #sidebar ul.components {
@@ -57,13 +61,13 @@ a, a:hover, a:focus {
     display: block;
 }
 #sidebar ul li a:hover {
-    color: #7386D5;
-    background: #fff;
+    color: #fff;
+    background: #777;
 }
 
 #sidebar ul li.active > a, a[aria-expanded="true"] {
     color: #fff;
-    background: #7386D5;
+    background: #777;
 }
 ul ul a {
     font-size: 0.9em !important;
@@ -98,6 +102,14 @@ a[data-toggle="collapse"] {
     padding: 20px;
     min-height: 100vh;
     transition: all 0.3s;
+}
+
+div.text-center p {
+    color: #212529;
+}
+
+.btn-create {
+    color: #fff;
 }
 
 @media (max-width: 768px) {
