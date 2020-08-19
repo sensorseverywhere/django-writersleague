@@ -112,6 +112,23 @@ div.text-center p {
     color: #fff;
 }
 
+
+/* Story Create */
+
+.btn-comp {
+    background-color: #00a000;
+    color: #fff;
+    width: 100px;
+    margin-right: 50px;
+    border-radius: 3px;
+}
+
+#competition-topbar {
+    display: none;
+}
+
+/* End Story Create */
+
 @media (max-width: 768px) {
     #sidebar {
         margin-left: -250px;
