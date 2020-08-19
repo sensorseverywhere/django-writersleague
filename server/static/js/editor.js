@@ -2,10 +2,10 @@ class CompetitionEditor {
     constructor(wordCount) {
         this.wordCount = wordCount;
         this.isCompetition = false;
+        this.cdt = {};
         document.addEventListener('DOMContentLoaded', () => {
-            this.logKeys();
+            this.comp();
         });
-        this.comp();
     }
 
     logKeys() {
@@ -17,9 +17,10 @@ class CompetitionEditor {
             if(keyCode === 32) {
                 // add number of spaces to a count
                 this.wordCount++;
-                if(this.wordCount >= 10 && this.wordCount <= 50) {
+                if(this.wordCount >= 0 && this.wordCount <= 1000) {
                     // if the number of spaces >= 500, disable the editor
-                    this.disableElement();
+                    document.getElementById('word-count').innerHTML = this.wordCount;
+                    // this.disableElement();
                 }
             }
         });
@@ -43,29 +44,19 @@ class CompetitionEditor {
 
         compButton.addEventListener("click", (e) => {
             e.stopPropagation();
-            let timer = new CountDownTimer(3602);
+            this.isCompetition ? this.isCompetition == false : this.isCompetition == true;
             if(this.isCompetition == false) {
                 this.isCompetition = true;
-                if(this.isCompetition == true){
-                    console.log('showing')
-                    document.getElementById('competition-topbar').style.display = "block";
-                    document.getElementById('word-count').innerHTML = this.wordCount;
-                }
-                
+                document.getElementById('competition-topbar').style.display = "block";
+                this.logKeys();
+                this.cdt = new CountDownTimer(20);
+                 document.getElementById('word-count').innerHTML = this.wordCount;
             } else {
                 this.isCompetition = false;
-                if(this.isCompetition == false){
-                    console.log('hidden')
-                    document.getElementById('competition-topbar').style.display = "none";
-                    document.getElementById('word-count').innerHTML = this.wordCount;
-                }
-            }
-            
+                document.getElementById('competition-topbar').style.display = "none";
+                this.cdt.stopTimer();
+              }
         });
-
-        
- 
-
     }
 }
 
@@ -74,16 +65,17 @@ class CompetitionEditor {
 class CountDownTimer {
 
     constructor(startTime) {
-        this.startTime, this.timeRemaining = startTime
+        this.timeRemaining = startTime
         this.seconds = 0;
         this.minutes = 0;
         this.hours = 0;
         this.days = 0;
-        this.initialiseClock(startTime);
+        this.timer = {};
+        this.initialiseClock();
     }
 
-    initialiseClock(startTime) {
-        const timer = setInterval(() => {
+    initialiseClock() {
+        this.timer = setInterval(() => {
             // timeRemaining is the seconds counter
             this.timeRemaining -= 1;
             // log hours, minutes, seconds 
@@ -91,15 +83,24 @@ class CountDownTimer {
             this.minutes = Math.floor(this.timeRemaining / 60);
             this.hours = Math.floor(this.timeRemaining / 3600);
             this.days = Math.floor((this.timeRemaining / 3600) / 24);
-            // console.log(Math.floor(this.timeRemaining / 3600), Math.floor(this.timeRemaining / 60), this.timeRemaining % 60)
 
+            document.getElementById('days').innerHTML = this.days;
+            document.getElementById('hours').innerHTML = this.hours;
+            document.getElementById('minutes').innerHTML = this.minutes;
+            document.getElementById('seconds').innerHTML = this.seconds;
+ 
+            
             if(this.timeRemaining == 0) {
-                clearInterval(timer);
-                console.log('Boom!')
+                this.stopTimer(this.timer)
             }
         }, 1000)
-    } 
-}
+    }
+
+    stopTimer() {
+        clearInterval(this.timer);
+        console.log('KaBoom!')
+    }
+ }
 
 
 let editor = new CompetitionEditor(0);
