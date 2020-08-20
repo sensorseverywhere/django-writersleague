@@ -42,26 +42,26 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     # Third Party
-    'corsheaders',
-    'crispy_forms',
-    'django_extensions',
-    'rest_framework',
-    'martor',
-    'storages',
-    'debug_toolbar',
     'allauth',
     'allauth.account',
-
+    'corsheaders',
+    'crispy_forms',
+    'debug_toolbar',
+    'django_extensions',
+    'martor',
+    'rest_framework',
+    'storages',
 
     # Local
-    'user.apps.UserConfig',
     'cart.apps.CartConfig',
     'orders.apps.OrdersConfig',
     'pages.apps.PagesConfig',
     'payments.apps.PaymentsConfig',
     'products.apps.ProductsConfig',
     'stories.apps.StoriesConfig',
+    'user.apps.UserConfig',
 ]
+
 
 AUTHENTICATION_BACKENDS = (
     'django.contrib.auth.backends.ModelBackend',

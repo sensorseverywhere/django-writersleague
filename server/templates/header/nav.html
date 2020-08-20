@@ -8,10 +8,6 @@
 			<p class="text-muted">... is a global writing competition</p>
 		  </div>
 		  <div class="col-sm-4 offset-md-1 py-4">
-
-
-
-
 		 {% if user.is_authenticated %}
 			<h4 class="text-white">
 				{% if user.is_authenticated %}
@@ -46,7 +42,7 @@
 	  <div class="container d-flex justify-content-between">
 		<a href="{% url 'story:story_list' %}" class="navbar-brand d-flex align-items-center">
 			<img src="{% static 'images/logo.png' %}" alt="logo">
-		    &nbsp; <small style="margin-top: -20px; font-size: 10pt;">the Writers League</small> 
+		    &nbsp; <small style="margin-top: -20px; font-size: 12pt;"><strong>the Writers League</strong></small> 
 		</a>
 		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarHeader" aria-controls="navbarHeader" aria-expanded="false" aria-label="Toggle navigation">
 		  <span class="navbar-toggler-icon"></span>
