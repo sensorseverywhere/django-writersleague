@@ -38,11 +38,19 @@
 		</div>
 	  </div>
 	</div>
-	<div class="navbar navbar-light bg-light box-shadow">
+	<div class="navbar navbar-light">
 	  <div class="container d-flex justify-content-between">
 		<a href="{% url 'story:story_list' %}" class="navbar-brand d-flex align-items-center">
 			<img src="{% static 'images/logo.png' %}" alt="logo">
-		    &nbsp; <small style="margin-top: -20px; font-size: 12pt;"><strong>the Writers League</strong></small> 
+		</a>
+		<a href="{% url 'story:story_list' %}" class="navbar-brand d-flex align-items-center">
+			Merch
+		</a>
+		<a href="{% url 'story:story_list' %}" class="navbar-brand d-flex align-items-center">
+			Comps
+		</a>
+		<a href="{% url 'story:story_list' %}" class="navbar-brand d-flex align-items-center">
+			About
 		</a>
 		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarHeader" aria-controls="navbarHeader" aria-expanded="false" aria-label="Toggle navigation">
 		  <span class="navbar-toggler-icon"></span>
