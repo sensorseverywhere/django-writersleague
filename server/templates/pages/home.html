@@ -6,12 +6,35 @@
 
 {% block content %}
 <div class="container-fluid">
-    <div class="banner">
-        
+    {% if not user.is_authenticated %}
+    <div class="banner">  
         <a href="#">
-            <img class="banner-btn" src="{% static 'images/banner-btn.png' %}" alt="">
+            <img 
+                class="banner-btn navbar-toggler" 
+                src="{% static 'images/banner-btn.png' %}" 
+                alt="" 
+                type="button" 
+                data-toggle="collapse"
+                 data-target="#navbarHeader" 
+                 aria-controls="navbarHeader" 
+                 aria-expanded="false" 
+                 aria-label="Toggle navigation"
+                 >
         </a>
     </div>
+    {% else %}
+    <div class="banner">  
+        <a href="{% url 'user:dashboard' %}">
+            <img 
+                class="banner-btn navbar-toggler" 
+                src="{% static 'images/banner-btn.png' %}" 
+                alt="" 
+            >
+        </a>
+    </div>
+    
+    {% endif %}
+
 </div>
 <section class="container-fluid stats py-5">
     <div class="row d-flex">
