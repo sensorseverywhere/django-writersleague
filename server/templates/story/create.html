@@ -5,7 +5,7 @@
 {% block title %} Create Story {% endblock title %}
 
 {% block content %}
-<div class="container col-md-8 m-3">
+<div class="container col-md-9 offset-1 m-3">
 	<div class="row m-3" id="competition-topbar">
 			<div class="left">
 				Word Count<span id="word-count"></span> 
@@ -28,16 +28,16 @@
                  </span>
 			</div>
     </div>
-    <div class="row m-3">
-        <h1>Add a new story here</h1>
-        <form method='POST'>
+    <div class="row m-3" style="width: 100%;">
+        <h1 style="width: 100%;">Add a new story here</h1>
+        <form method='POST' style="width: 100%;">
             {% csrf_token %}
             {{form.media}}
-            <div class="row">
-                <div class="col-12">
+            <div class="row" style="width: 100%;">
+                <div class="col-12" style="width: 100%;">
                     {{ form.title|as_crispy_field }}
                 </div>
-                <div class="col-12">
+                <div class="col-12" style="width: 100%;">
                     {{ form.content|as_crispy_field }}
                 </div>
                 {{ form.genre|as_crispy_field }}

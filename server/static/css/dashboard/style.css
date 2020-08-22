@@ -130,6 +130,7 @@ div.text-center p {
 
 #competition-topbar {
     display: none;
+    height: 50px;
 }
 
 /* End Story Create */
