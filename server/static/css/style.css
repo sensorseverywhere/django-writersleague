@@ -30,8 +30,29 @@ p {
     color: rgba(99, 45, 44, 1);
 }
 
-.navbar-inverse {
-    background-color: #fff;
+.navbar {
+    box-shadow: none;
+    border-top: 1px solid #63632C;
+}
+
+.navbar-light .navbar-brand {
+    color: rgba(99, 45, 44, 1);
+    padding: 0px;
+}
+
+
+.navbar-light .navbar-toggler {
+    border: none;
+    width: 47px;
+    height: 34px;
+}
+
+.navbar-toggler .line{
+    width: 100%;
+    float: left;
+    height: 2px;
+    background-color: rgba(99, 45, 44, 1);;
+    margin-bottom: 5px;
 }
 
 .banner {
@@ -126,4 +147,9 @@ input#id_votes {
     -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
     filter: progid: DXImageTransform.Microsoft.Alpha(Opacity=100);
     opacity: 1;
+  }
+
+
+  .homepage-login-form label[for="id_login"],  .homepage-login-form label[for="id_password"] {
+    display: none
   }

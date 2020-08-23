@@ -1,5 +1,6 @@
 import logging
 
+from allauth.account.forms import LoginForm, SignupForm
 from django.views.generic import TemplateView
 from django.views.generic.edit import FormView
 from django.urls import reverse_lazy
@@ -23,7 +24,9 @@ class HomePageView(TemplateView):
         context = super(HomePageView, self).get_context_data(**kwargs)
         context['home'] = ContentBlock.objects.all()
         context['stories'] = Story.objects.all()
-        context['user_form'] = UserRegistrationForm()
+        context['login_form'] = LoginForm()
+        context['signup_form'] = SignupForm()
+
         return context
 
 
