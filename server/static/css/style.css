@@ -153,3 +153,20 @@ input#id_votes {
   .homepage-login-form label[for="id_login"],  .homepage-login-form label[for="id_password"] {
     display: none
   }
+
+  .homepage-login-form #div_id_login input {
+      margin-right: 10px;
+  }
+
+  .homepage-login-form #div_id_login input, .homepage-login-form #div_id_password input {
+      width: 40%;
+      display: inline;
+      float: left;
+  }
+
+  .homepage-login-form p input {
+      display: inline;
+      float: left;
+      text-transform: initial;
+      font-size: 16px;
+  }
