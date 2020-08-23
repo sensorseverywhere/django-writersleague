@@ -49,15 +49,12 @@
 						
 
 				{% else %}
-				<form class='form-inline ml-auto'>
+				<div class="navbar-account-urls m-3">
 					<a href='{% url "account_login" %}' class='ml-2'>Login</a>
 					<a href='{% url "account_signup" %}' class='ml-2'>Sign up</a>
-				</form>
+				</div>
 				{% endif %}
-				
-			  
 			</div>
-
 		 {% endif %}
 		  </div>
 		</div>
@@ -73,6 +70,12 @@
 		</a>
 		<a href="{% url 'story:story_list' %}" class="navbar-brand d-flex align-items-center">
 			Comps
+		</a>
+		<a href="{% url 'story:story_list' %}" class="navbar-brand d-flex align-items-center">
+			Stories
+		</a>
+		<a href="{% url 'story:story_list' %}" class="navbar-brand d-flex align-items-center">
+			Articles
 		</a>
 		<a href="{% url 'story:story_list' %}" class="navbar-brand d-flex align-items-center">
 			About

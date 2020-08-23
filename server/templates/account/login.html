@@ -11,6 +11,9 @@
                 <h1>Login</h1>
                 {% if form.errors %}
                     <p>Sorry, your username and password didn't match, please try again.</p>
+                    <p>If you don't have a password please 
+                        <a href="{% url 'account_signup' %}">sign up</a>.
+                    </p>
                 {% else %}
                     <div class="login-form">
                         <form action="{% url 'account_login' %}" method="POST">

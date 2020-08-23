@@ -3,12 +3,19 @@
     src: url("../fonts/opentype/Vin Mono Pro Light/VinMonoPro-Light.otf");
 }
 
+/* EBE9EB - Gray
+ecdfce - light brown / yellow
+#64492C - dark brown
+
+63632C green
+632D2C red */
+
 .navbar-inverse {
-    background-color: #fff;
+    background-color: #ecdfce;
 }
 
 .dashboard-nav-link {
-    color: #fff;
+    color: #632D2C;
 }
 
 .btn-toggle {
@@ -17,7 +24,7 @@
 
 body {
     font-family: 'Josefin Slab', serif;
-    background: #fafafa;
+    background: #ecdfce;
 }
 
 p {
@@ -35,12 +42,14 @@ a, a:hover, a:focus {
 }
 
 #sidebar {
-    background: #000;
+    background: #ecdfce;
     color: #fff;
     transition: all 0.3s;
-    min-width: 250px;
-    max-width: 250px;
+    min-width: 50px;
+    max-width: 50px;
     min-height: 100vh;
+    border-right: 1px solid #632D2C;
+    z-index: 1000;
 }
 
 #sidebar .sidebar-header {

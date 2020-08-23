@@ -4,15 +4,21 @@
   <ul class="list-unstyled components">
     {% if user.user_type == 1 %}
     <li>
-        <a class="dashboard-nav-link" href="{% url 'story:story_create' %}">Create</a>
+        <a class="dashboard-nav-link" href="{% url 'story:story_create' %}">
+            <i class="fa fa-feather"></i>
+        </a>
     </li>
     {% endif %}
     <li class="active">
-        <a class="dashboard-nav-link" href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Home</a>
+        <a class="dashboard-nav-link" href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+            <i class="fa fa-home"></i>
+        </a>
 
     </li>
     <li>
-        <a class="dashboard-nav-link" href="#pageSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Stats</a>
+        <a class="dashboard-nav-link" href="#pageSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+            <i class="fas fa-chart-line"></i>
+        </a>
         <!-- <ul class="collapse list-unstyled" id="homeSubmenu">
             <li>
                 <a href="#">Content</a>
@@ -27,10 +33,14 @@
      
     </li>
     <li>
-        <a class="dashboard-nav-link" href="#">Marketplace</a>
+        <a class="dashboard-nav-link" href="#">
+            <i class="fas fa-book"></i>
+        </a>
     </li>
     <li>
-        <a class="dashboard-nav-link" href="#accountSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Account</a>
+        <a class="dashboard-nav-link" href="#accountSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+            <i class="fas fa-user-circle"></i>
+        </a>
         <ul class="collapse list-unstyled" id="accountSubmenu">
             <li>
                 <a href="{% url 'account_logout' %}">Logout</a>

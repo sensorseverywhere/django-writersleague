@@ -56,19 +56,22 @@ p {
 }
 
 .banner {
-    background: url('../images/banner-bkg.png') center bottom fixed no-repeat;
+    background: url('../images/banner-bkg.png');
+    background-repeat: no-repeat;
+    background-position: bottom;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
     background-size: cover;
-    min-height: 600px;
-    max-height: 700px;
+    min-height: 400px;
+    max-height: 400px;
+    width: auto;
 }
 
 
 
 .banner-btn {
-    margin: 0 auto;
+    margin: 10% auto;
     display: block;
     padding-top: 20px;
     background-repeat: no-repeat;
@@ -169,4 +172,8 @@ input#id_votes {
       float: left;
       text-transform: initial;
       font-size: 16px;
+  }
+
+  .navbar-account-urls {
+      float: right;
   }
