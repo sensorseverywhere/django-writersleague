@@ -1,5 +1,6 @@
 
-{% if votes == 0 %}
+<div class="d-flex flex-column author-dashboard">
+    {% if votes == 0 %}
     <span>Looks like you don't have any votes! </span>    
 
     <p><a href="{% url 'products:plans' %}">You can buy them here.</a></p>
@@ -10,8 +11,10 @@
 
     <p>You've just purchased {{user.num_votes}} votes.</p>
 
-    <p>Want to buy more? <a href="{% url 'products:plans' %}">You can buy them here.</a></p>
+    <p class="d-flex justify-content-center">Want to buy more? <a href="{% url 'products:plans' %}">You can buy them here.</a></p>
 {% endif %}
+</div>
+
   
 
       

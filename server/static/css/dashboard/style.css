@@ -95,6 +95,10 @@ ul ul a {
     z-index: 10000;
 }
 
+.author-dashboard {
+    width: 100%;
+}
+
 .wrapper {
     display: flex;
     width: 100%;
