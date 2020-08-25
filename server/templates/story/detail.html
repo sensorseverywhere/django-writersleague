@@ -20,7 +20,7 @@
                         class="d-flex justify-content-center">
                         {{ upvote_form.as_p }}
                         {% csrf_token %}
-                        <button class="upvote-btn" type='submit'><i class="fa fa-caret-up fa-2x"></i></button>
+                        <button class="upvote-btn" type='submit'><i class="fa fa-caret-up fa-2x"  style="color: #63632C"></i></button>
                     </form>
                     <span class="d-flex justify-content-center vote-count">
                         {{ story.votes }}
@@ -29,17 +29,17 @@
                         class="d-flex justify-content-center">
                         {{ downvote_form.as_p }}
                         {% csrf_token %}
-                        <button class="downvote-btn" type='submit'><i class="fa fa-caret-down fa-2x"></i></button>
+                        <button class="downvote-btn" type='submit'><i class="fa fa-caret-down fa-2x" style="color: #63632C"></i></button>
                     </form>
                     {% else %}
                     <a href="#" class="d-flex justify-content-center" data-tooltip="Login to vote!">
-                        <i class="fa fa-caret-up fa-2x"></i>
+                        <i class="fa fa-caret-up fa-2x"  style="color: #63632C"></i>
                     </a>
                     <span class="d-flex justify-content-center">
                         {{ story.votes }}
                     </span>
                     <a href="#" class="d-flex justify-content-center" data-tooltip="Login to vote!">
-                        <i class="fa fa-caret-down fa-2x"></i>
+                        <i class="fa fa-caret-down fa-2x"  style="color: #63632C"></i>
                     </a>
 
                     {% endif %}
