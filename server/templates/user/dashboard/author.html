@@ -1,6 +1,6 @@
 {% load static %}
-
-{% if stories|length == 0 %}
+<div class="text-center">
+    {% if stories|length == 0 %}
     Currently 0 stories
 {% else %}
     <table class="table">
@@ -24,3 +24,5 @@
 
     </table>
 {% endif %}
+
+</div>

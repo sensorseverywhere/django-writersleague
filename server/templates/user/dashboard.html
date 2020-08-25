@@ -4,7 +4,7 @@
 {% block title %}Dashboard{% endblock title %}
 
 {% block content %}
-<div class="container m-3">
+<div class="container m-3 d-flex justify-content-center">
   <div class="row">
     <div class="col-md-10 offset-1">
       {% if messages %}
@@ -16,9 +16,8 @@
       {% endif %}
     </div>
   </div>
-  <div class="row">
-    <div class="col-md-10 offset-1">
-      <div class="text-center">
+  <div class="row d-flex justify-content-center">
+
         {% if user.username == '' %}
             Hi, it looks like you need to update your profile. <br>
             If you want to add a username <p><a href="/account/update/"> click here.</a> </p>
@@ -26,8 +25,7 @@
             Hi {{user.username}}, welcome to your dashboard <br>
             Your user id is {{user.id}}
         {% endif %}
-      </div>
-    </div>
+
   </div>
   <hr>
   <div class="row mt-5">
@@ -42,11 +40,4 @@
     </div>
   </div>
 </div>
-
-  
-</div>
-  <!-- <div id="dashboard mt-5 ml-5">
-    <div class="container">
-     
-</div> -->
 {% endblock content %}

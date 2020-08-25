@@ -1,6 +1,6 @@
 @font-face {
-    font-family: "Vin Mono Pro Light";
-    src: url("../fonts/opentype/Vin Mono Pro Light/VinMonoPro-Light.otf");
+    font-family: "Sawasdee";
+    src: url("../fonts/Sawasdee.ttf");
 }
 
 /* EBE9EB - Gray
@@ -10,25 +10,34 @@ ecdfce - light brown / yellow
 63632C green
 632D2C red */
 
+
+
+
 .navbar-inverse {
     background-color: #ecdfce;
 }
 
-.dashboard-nav-link {
+.dashboard-nav-link, .dashboard-toggle {
     color: #632D2C;
+    right: 15px;
 }
 
 .btn-toggle {
-    color: #000;
+    color:rgba(99, 45, 44, 1);
+}
+
+.btn-toggle:hover, .btn-toggle:focus {
+    background: #63632C;
 }
 
 body {
-    font-family: 'Josefin Slab', serif;
-    background: #ecdfce;
+    font-family: 'Sawasdee';
+    background: #fffffa;
+    color: rgba(99, 45, 44, 1);
 }
 
 p {
-    font-family: 'Josefin Slab', serif;
+    font-family: 'Sawasdee';
     font-size: 16px;
     font-weight: 600;
     line-height: 1.7em;
@@ -36,13 +45,13 @@ p {
 }
 
 a, a:hover, a:focus {
-    color: #777;
+    color: #63632C;
     text-decoration: none;
     transition: all 0.3s;
 }
 
 #sidebar {
-    background: #ecdfce;
+    background: #fffffa;
     color: #fff;
     transition: all 0.3s;
     min-width: 50px;
@@ -50,16 +59,12 @@ a, a:hover, a:focus {
     min-height: 100vh;
     border-right: 1px solid #632D2C;
     z-index: 1000;
+    position: fixed;
 }
 
 #sidebar .sidebar-header {
     padding: 20px;
     background: #000;
-}
-
-#sidebar ul.components {
-    padding: 20px 0;
-    border-bottom: 1px solid #00a000;
 }
 
 #sidebar ul p {
@@ -74,17 +79,20 @@ a, a:hover, a:focus {
 }
 #sidebar ul li a:hover {
     color: rgba(99, 45, 44, 1);
-    background: #777;
+    background: #63632C;
 }
 
 #sidebar ul li.active > a, a[aria-expanded="true"] {
     color: #fff;
-    background: #777;
+    background: #63632C;
 }
 ul ul a {
     font-size: 0.9em !important;
     padding-left: 30px !important;
-    background: #00a000;
+}
+
+.dashboard-nav {
+    z-index: 10000;
 }
 
 .wrapper {
@@ -94,7 +102,7 @@ ul ul a {
 }
 
 #sidebar.active {
-    margin-left: -250px;
+    margin-left: -150px;
 }
 
 a[data-toggle="collapse"] {
@@ -149,5 +157,8 @@ div.text-center p {
     }
     #sidebar.active {
         margin-left: 0;
+    }
+    .btn-toggle {
+        left: 5px;
     }
 }
