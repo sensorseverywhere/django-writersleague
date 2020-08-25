@@ -4,7 +4,7 @@
 }
 /* 
 EBE9EB - Gray
-ecdfce - light brown / yellow
+fffffa - light brown / yellow
 #64492C - dark brown
 
 63632C green
@@ -15,7 +15,7 @@ ecdfce - light brown / yellow
 
 body {
     font-family: 'Josefin Slab', serif;
-    background: #ecdfce;
+    background: #fffffa;
     color: rgba(99, 45, 44, 1);
     -webkit-box-shadow: inset 0px -8px 53px -5px rgba(100,73,44,0.52);
     -moz-box-shadow: inset 0px -8px 53px -5px rgba(100,73,44,0.52);
