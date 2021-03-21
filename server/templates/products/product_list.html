@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Products{% endblock title %}
+
+{% block content %}
+
+    {% for product in products %}
+        {{product}} | {{product.price}}
+  
+    {% endfor %}
+{% endblock content %}

@@ -19,6 +19,8 @@ pydotplus==2.0.2
 stripe==2.48.0
 weasyprint==51
 whitenoise==5.1.0
+#Development
+django-livereload-server==0.3.2
 #Testing
 flake8===3.7.9
 pytest-cov==2.8.1
