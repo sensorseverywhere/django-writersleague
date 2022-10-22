@@ -10,7 +10,7 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.0/ref/settings/
 """
 
-import dj_database_url
+# import dj_database_url
 import os
 import socket
 
@@ -48,7 +48,7 @@ INSTALLED_APPS = [
     'corsheaders',
     'crispy_forms',
     'debug_toolbar',
-    'django_extensions',
+    # 'django_extensions',
     'martor',
     'rest_framework',
     'storages',
@@ -130,9 +130,11 @@ DATABASES = {
     }
 }
 
-DATABASE_URL = os.environ.get('DATABASE_URL')
-db_from_env = dj_database_url.config(default=DATABASE_URL, conn_max_age=500)
-DATABASES['default'].update(db_from_env)
+DEFAULT_AUTO_FIELD = 'django.db.models.AutoField'
+
+# DATABASE_URL = os.environ.get('DATABASE_URL')
+# db_from_env = dj_database_url.config(default=DATABASE_URL, conn_max_age=500)
+# DATABASES['default'].update(db_from_env)
 
 
 # Password validation
@@ -181,6 +183,8 @@ ANYMAIL = {
 
 APPEND_SLASH = False
 
+# password for wade@mg.thewritersleague.net
+# ee10a6ce46b575fc084fc55e66d3a728-d2cc48bc-392b4511
 
 if not DEBUG:
     # EMAIL SETTINGS

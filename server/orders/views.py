@@ -9,8 +9,8 @@ from .forms import CreateOrderForm
 from cart.cart import Cart
 
 import stripe
-from weasyprint import HTML, CSS
-from weasyprint.fonts import FontConfiguration
+# from weasyprint import HTML, CSS
+# from weasyprint.fonts import FontConfiguration
 
 
 stripe.api_key = "sk_test_owBhMcnDT8wl53B3jVGjf6SP00UgnKsLBG"
