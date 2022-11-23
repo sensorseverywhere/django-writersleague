@@ -1,8 +1,8 @@
 # pull official base image
-FROM python:3.8.2-alpine
+FROM python:3.10.1-slim-buster
 
-# set work directory
-WORKDIR /usr/src/app
+# set working directory
+WORKDIR /usr/src/backend
 
 # set environment variables
 ENV PYTHONDONTWRITEBYTECODE 1
@@ -10,45 +10,29 @@ ENV PYTHONUNBUFFERED 1
 
 ARG DEBUG
 ARG SECRET_KEY
-# ARG DJANGO_ALLOWED_HOSTS
-ARG MAILGUN_API_KEY
-ARG STRIPE_SECRET_KEY
-ARG STRIPE_PUBLISHABLE_KEY
+ENV DJANGO_ALLOWED_HOSTS .herokuapp.com
 
-ARG AWS_ACCESS_KEY_ID
-ARG AWS_SECRET_ACCESS_KEY
-ARG AWS_STORAGE_BUCKET_NAME
-
-ENV DEBUG $DEBUG
-ENV SECRET_KEY $SECRET_KEY
-ENV DJANGO_ALLOWED_HOSTS www.thewritersleague.net thewritersleague.net
-ENV MAILGUN_API_KEY $MAILGUN_API_KEY
-
-ENV AWS_ACCESS_KEY_ID $AWS_ACCESS_KEY_ID
-ENV AWS_SECRET_ACCESS_KEY $AWS_SECRET_ACCESS_KEY
-ENV AWS_STORAGE_BUCKET_NAME $AWS_STORAGE_BUCKET_NAME
-
-ENV STRIPE_SECRET_KEY $STRIPE_SECRET_KEY
-ENV STRIPE_PUBLISHABLE_KEY $STRIPE_PUBLISHABLE_KEY
-
-RUN apk --update --upgrade --no-cache add cairo-dev pango-dev gdk-pixbuf
-
-RUN apk add build-base python3-dev py-pip jpeg-dev zlib-dev musl-dev openssl-dev gcc libffi-dev postgresql-dev graphviz ttf-freefont
-ENV LIBRARY_PATH=/lib:/usr/lib
+# updated
+# install system dependencies
+RUN apt-get update \
+  && apt-get -y install netcat gcc libpq-dev postgresql \
+  && apt-get clean
 
 # install dependencies
 RUN pip install --upgrade pip
-COPY ./requirements.txt /usr/src/app/requirements.txt
+COPY ./requirements.txt .
 RUN pip install -r requirements.txt
 
-# copy project
-COPY . /usr/src/app/
+
+# add app
+COPY . .
 
 RUN python manage.py collectstatic --noinput
 
-# add and run as non-root user
-RUN adduser -D miriad
+RUN adduser --disabled-password miriad
 USER miriad
+
+
 
 # run gunicorn
 CMD gunicorn writersleague.wsgi:application --bind 0.0.0.0:$PORT
