@@ -38,9 +38,11 @@ class CustomUserManager(BaseUserManager):
 class CustomUser(AbstractUser):
     SPONSOR = 0
     AUTHOR = 1
+    VOTER = 2
     USER_TYPES = (
         (SPONSOR, 'Sponsor'),
-        (AUTHOR, 'Author')
+        (AUTHOR, 'Author'),
+        (VOTER, 'Voter')
     )
     username = models.CharField(max_length=60, unique=True)
     email = models.EmailField('email address', unique=True)
