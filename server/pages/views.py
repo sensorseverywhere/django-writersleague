@@ -39,6 +39,33 @@ class AboutPageView(TemplateView):
         return context
 
 
+class ArticlePageView(TemplateView):
+    template_name = "pages/articles.html"
+
+    # def get_context_data(self, **kwargs):
+    #     context = super(AboutPageView, self).get_context_data(**kwargs)
+    #     context['contents'] = ContentBlock.objects.all()
+    #     return context
+
+
+class MerchPageView(TemplateView):
+    template_name = "pages/merch.html"
+
+    # def get_context_data(self, **kwargs):
+    #     context = super(AboutPageView, self).get_context_data(**kwargs)
+    #     context['contents'] = ContentBlock.objects.all()
+    #     return context
+
+
+class CompsPageView(TemplateView):
+    template_name = "pages/comps.html"
+
+    # def get_context_data(self, **kwargs):
+    #     context = super(AboutPageView, self).get_context_data(**kwargs)
+    #     context['contents'] = ContentBlock.objects.all()
+    #     return context
+
+
 class ContactFormView(FormView):
     template_name = 'pages/contact.html'
     form_class = ContactForm

@@ -21,6 +21,21 @@ urlpatterns = [
         name="about"
         ),
     path(
+        'comps/',
+        views.AboutPageView.as_view(),
+        name="comps"
+        ),
+    path(
+        'merch/',
+        views.AboutPageView.as_view(),
+        name="merch"
+        ),
+    path(
+        'articles/',
+        views.AboutPageView.as_view(),
+        name="articles"
+        ),
+    path(
         'contact/',
         views.ContactFormView.as_view(),
         name="contact"

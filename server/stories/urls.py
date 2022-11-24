@@ -6,7 +6,7 @@ app_name = 'story'
 
 urlpatterns = [
     path(
-        '',
+        'stories/',
         views.StoryListView.as_view(),
         name="story_list"
         ),
