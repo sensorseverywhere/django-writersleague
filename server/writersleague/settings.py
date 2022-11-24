@@ -33,6 +33,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.sites',
     'livereload',
+    'whitenoise.runserver_nostatic',
     'django.contrib.staticfiles',
 
     # Third Party
