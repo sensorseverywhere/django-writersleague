@@ -35,10 +35,10 @@ urlpatterns = [
 if not settings.DEBUG:
     urlpatterns += re_path('^static/(?P<path>.*)$', serve, dict(document_root=settings.STATIC_ROOT)),
 
-if settings.DEBUG:
-    import debug_toolbar
-    # static files (images, css, javascript, etc.)
-    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
-    urlpatterns = [
-        path('__debug__/', include(debug_toolbar.urls)),
-    ] + urlpatterns
+# if settings.DEBUG:
+#     import debug_toolbar
+#     # static files (images, css, javascript, etc.)
+#     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+#     urlpatterns = [
+#         path('__debug__/', include(debug_toolbar.urls)),
+#     ] + urlpatterns
