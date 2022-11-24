@@ -10,7 +10,7 @@ ENV PYTHONUNBUFFERED 1
 
 ARG DEBUG
 ARG SECRET_KEY
-ENV DJANGO_ALLOWED_HOSTS .herokuapp.com
+ENV DJANGO_ALLOWED_HOSTS thewritersleague.herokuapp.com
 
 # updated
 # install system dependencies
