@@ -39,9 +39,11 @@ deploy:
     script:
         - apk add --no-cache curl
         - cd server
+        - echo $DJANGO_ALLOWED_HOSTS
         - docker build
             --tag $HEROKU_REGISTRY_IMAGE
             --file ./Dockerfile.prod
+
             "."
         - docker login -u _ -p $HEROKU_AUTH_TOKEN registry.heroku.com
         - docker push $HEROKU_REGISTRY_IMAGE
