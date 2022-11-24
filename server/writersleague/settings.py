@@ -82,6 +82,7 @@ MIDDLEWARE = [
 CORS_ORIGIN_WHITELIST = (
         'http://localhost:3000',
         'http://localhost:8000',
+        'https://thewritersleague.herokuapp.com',
     )
 
 
@@ -207,11 +208,7 @@ if not DEBUG:
 
     STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
     STATICFILES_STORAGE = 'whitenoise.storage.CompressedStaticFilesStorage'
-    CORS_ORIGIN_WHITELIST = (
-        'http://localhost:3000',
-        'http://localhost:8000',
-        'https://thewritersleague.herokuapp.com/',
-    )
+
 
 else:
     EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
@@ -223,10 +220,6 @@ else:
     STATIC_URL = '/static/'
 
     STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
-    # CORS_ORIGIN_WHITELIST = (
-    #     'http://localhost:3000',
-    #     'http://localhost:8000',
-    # )
 
 
 ACCOUNT_EMAIL_REQUIRED = True
