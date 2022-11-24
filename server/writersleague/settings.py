@@ -16,8 +16,8 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = os.environ.get("SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
-# DEBUG = int(os.environ.get("DEBUG", default=0))
-DEBUG = True
+DEBUG = int(os.environ.get("DEBUG", default=0))
+# DEBUG = True
 
 ALLOWED_HOSTS = os.environ.get("DJANGO_ALLOWED_HOSTS").split(" ")
 
@@ -207,6 +207,11 @@ if not DEBUG:
 
     STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
     STATICFILES_STORAGE = 'whitenoise.storage.CompressedStaticFilesStorage'
+    CORS_ORIGIN_WHITELIST = (
+        'http://localhost:3000',
+        'http://localhost:8000',
+        'https://thewritersleague.herokuapp.com/',
+    )
 
 else:
     EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
@@ -218,10 +223,10 @@ else:
     STATIC_URL = '/static/'
 
     STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
-#     # CORS_ORIGIN_WHITELIST = (
-#     #     'http://localhost:3000',
-#     #     'http://localhost:8000',
-#     # )
+    # CORS_ORIGIN_WHITELIST = (
+    #     'http://localhost:3000',
+    #     'http://localhost:8000',
+    # )
 
 
 ACCOUNT_EMAIL_REQUIRED = True
