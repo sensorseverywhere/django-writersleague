@@ -9,7 +9,7 @@ ENV PYTHONDONTWRITEBYTECODE 1
 ENV PYTHONUNBUFFERED 1
 
 ARG DEBUG
-ARG SECRET_KEY
+ENV SECRET_KEY axex7_-5@4=*!r!bd7_t508@6&k49l^^j-7n)c*yansbvnm2q97@$adn4bl3*qfv_uw!ehw*d9@0htz=
 ENV DJANGO_ALLOWED_HOSTS thewritersleague.herokuapp.com
 
 # updated
