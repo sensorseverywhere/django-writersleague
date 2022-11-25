@@ -224,7 +224,7 @@ STATICFILES_DIRS = [
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATICFILES_STORAGE = "whitenoise.storage.CompressedStaticFilesStorage"
 
-
+print(STATIC_ROOT)
 
 
 ACCOUNT_EMAIL_REQUIRED = True
