@@ -1,5 +1,0 @@
-env
-.dockerignore
-Dockerfile
-Dockerfile.prod
-server/htmlcov/
