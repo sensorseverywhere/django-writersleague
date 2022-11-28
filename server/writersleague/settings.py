@@ -209,6 +209,22 @@ if not DEBUG:
     SECURE_REFERRER_POLICY = "same-origin"
 
 
+    AWS_ACCESS_KEY_ID = 'DO00TFN8VJJQJKRMKPTG'
+    AWS_SECRET_ACCESS_KEY = 'SRLwuNsdTU8fSShCWoeOLawxqDK7i9nnRU4wRGyabew'
+
+    AWS_STORAGE_BUCKET_NAME = 'writersleague'
+    AWS_S3_ENDPOINT_URL = 'https://writersleague-v1.syd1.digitaloceanspaces.com'
+    AWS_S3_OBJECT_PARAMETERS = {
+        'CacheControl': 'max-age=86400',
+    }
+    AWS_LOCATION = 'static'
+    AWS_DEFAULT_ACL = 'public-read'
+
+    STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+
+    STATIC_URL = '{}/{}/'.format(AWS_S3_ENDPOINT_URL, AWS_LOCATION)
+    STATIC_ROOT = 'static/'
+
 
 else:
     EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
